@@ -1,0 +1,18 @@
+.header {
+    width: 880px;
+    height: 74px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 45px auto;
+    padding: 0;
+}
+
+.header__logo {
+    width: 173px;
+    height: 33px;
+}
+
+.header__divider {
+    width: 880px;
+}
