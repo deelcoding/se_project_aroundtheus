@@ -3,6 +3,7 @@
 @import url(../blocks/header.css);
 @import url(../blocks/profile.css);
 @import url(../blocks/cards.css);
+@import url(../blocks/footer.css);
 
 @media screen and (max-width: 320px) {
     
