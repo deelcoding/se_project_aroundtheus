@@ -1,0 +1,108 @@
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-row-gap: 20px;
+    grid-column-gap: 17px;
+    width: 880px;
+    max-height: 742px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.cards p {
+    font-family: "InterVariable";
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 1.2;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.cards__heart {
+    width: 21px;
+    height: 18px;
+}
+
+.cards__yosemite {
+    width: 282px;
+    height: 361px;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+.cards__yosemite__picture {
+    width: 282px;
+    height: 282px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.cards__lake-louise {
+    width: 282px;
+    height: 361px;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+.cards__lake-louise__picture {
+    width: 282px;
+    height: 282px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.cards__bald-mountains {
+    width: 282px;
+    height: 361px;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+.cards__bald-mountains__picture {
+    width: 282px;
+    height: 282px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.cards__latemar {
+    width: 282px;
+    height: 361px;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+.cards__latemar__picture {
+    width: 282px;
+    height: 282px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.cards__vanoise {
+    width: 282px;
+    height: 361px;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+.cards__vanoise__picture {
+    width: 282px;
+    height: 282px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.cards__lago {
+    width: 282px;
+    height: 361px;
+    background-color: #ffffff;
+}
+
+.cards__lago__picture {
+    width: 282px;
+    height: 282px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
