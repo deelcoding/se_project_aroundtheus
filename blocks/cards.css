@@ -24,6 +24,11 @@
     height: 18px;
 }
 
+.cards__heart:hover {
+    cursor: pointer;
+    opacity: 50%;
+}
+
 .cards__yosemite {
     width: 282px;
     height: 361px;
