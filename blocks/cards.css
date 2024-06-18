@@ -15,8 +15,12 @@
     font-size: 24px;
     line-height: 1.2;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 25px;
+    padding: 0;
 }
 
 .cards__heart {
@@ -103,6 +107,7 @@
     width: 282px;
     height: 361px;
     background-color: #ffffff;
+    border-radius: 10px;
 }
 
 .cards__lago__picture {
