@@ -16,8 +16,7 @@
 
 .profile__info {
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
     max-width: 415px;
     max-height: 80px;
     margin-right: 185px;
