@@ -10,3 +10,9 @@ body {
     margin: 0 auto;
     padding: 0;
 }
+
+.content {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+}
