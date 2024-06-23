@@ -12,6 +12,7 @@
     width: 120px;
     height: 120px;
     margin: 0;
+    padding: 0;
 }
 
 .profile__info {
@@ -73,7 +74,7 @@
         flex-direction: column;
         max-width: 282px;
         height: 286px;
-        margin: 74px auto 36px;
+        margin: 40px auto 36px;
     }
 
     .profile__image {
