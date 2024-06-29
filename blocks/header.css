@@ -1,39 +1,29 @@
-.header {
-    width: 880px;
-    height: 74px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin: 0 auto;
-    padding: 0;
-}
-
 .header__logo {
-    width: 173px;
+    width: 172px;
     height: 33px;
     margin-top: 45px;
-    margin-bottom: 41px;
 }
 
-.header__divider {
-    width: 880px;
-    margin-bottom: 40px;
+.header__line {
+    width: 100%;
+    margin: 40px auto;
 }
 
 @media screen and (max-width: 320px) {
     .header {
-        width: 320px;
-        height: 56px;
+        max-width: 282px;
     }
 
     .header__logo {
         width: 126px;
         height: 24px;
-        margin: 28px 167px 32px 27px;
+        margin-top: 28px;
+        margin-left: 27px;
     }
+}
 
-    .header__divider {
-        max-width: 320px;
-        margin: 0 auto;
+@media screen and (max-width: 480px) {
+    .header__logo {
+        margin-left: 27px;
     }
 }

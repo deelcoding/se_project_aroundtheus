@@ -1,127 +1,68 @@
 .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 282px);
-    grid-template-rows: 3;
-    grid-row-gap: 20px;
-    grid-column-gap: 17px;
-    width: 880px;
-    max-height: 742px;
-    margin: 0 auto;
-    padding: 0;
-}
-
-.cards p {
-    font-family: "InterVariable";
+    font-family: "InterVariable", sans-serif;
     font-weight: 900;
     font-size: 24px;
     line-height: 1.2;
+    margin-top: 40px;
+    justify-content: center;
+}
+
+.card__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 282px);
+    grid-gap: 20px 17px;
+    justify-content: center;
+    padding: 0;
+    margin-top: 51px;
+}
+
+.card {
     display: flex;
+    flex-direction: column;
+    list-style-type: none;
+}
+
+.card__image {
+    width: 282px;
+    height: 282px;
+    border-radius: 10px 10px 0 0;
+}
+
+.card__title {
+    margin: 0;
+    padding: 0;
+    max-width: 219px;
+    height: 29px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.card__description {
+    display: flex;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 25px 20px;
     justify-content: space-between;
     align-items: center;
-    margin-right: 20px;
-    margin-left: 20px;
-    margin-bottom: 25px;
-    padding: 0;
+    border-radius: 0 0 10px 10px;
 }
 
-.cards__heart {
+.card__heart {
+    background: transparent url(../images/Heart.svg) center no-repeat;
     width: 21px;
     height: 18px;
+    border: none;
 }
 
-.cards__heart:hover {
-    cursor: pointer;
+.card__heart:hover {
     opacity: 50%;
+    cursor: pointer;
 }
 
-.cards__yosemite {
-    width: 282px;
-    height: 361px;
-    background-color: #ffffff;
-    border-radius: 10px;
-}
-
-.cards__yosemite__picture {
-    width: 282px;
-    height: 282px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-
-.cards__lake-louise {
-    width: 282px;
-    height: 361px;
-    background-color: #ffffff;
-    border-radius: 10px;
-}
-
-.cards__lake-louise__picture {
-    width: 282px;
-    height: 282px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-
-.cards__bald-mountains {
-    width: 282px;
-    height: 361px;
-    background-color: #ffffff;
-    border-radius: 10px;
-}
-
-.cards__bald-mountains__picture {
-    width: 282px;
-    height: 282px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-
-.cards__latemar {
-    width: 282px;
-    height: 361px;
-    background-color: #ffffff;
-    border-radius: 10px;
-}
-
-.cards__latemar__picture {
-    width: 282px;
-    height: 282px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-
-.cards__vanoise {
-    width: 282px;
-    height: 361px;
-    background-color: #ffffff;
-    border-radius: 10px;
-}
-
-.cards__vanoise__picture {
-    width: 282px;
-    height: 282px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-
-.cards__lago {
-    width: 282px;
-    height: 361px;
-    background-color: #ffffff;
-    border-radius: 10px;
-}
-
-.cards__lago__picture {
-    width: 282px;
-    height: 282px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-
-@media screen and (max-width: 320px) {
-    .cards {
-        grid-template-columns: repeat(1, 1fr);
-        max-width: 282px;
-        margin: 0 auto;
+@media screen and (max-width: 480px) {
+    .card__list {
+        margin-top: 0;
+        margin-bottom: 48px;
     }
 }
