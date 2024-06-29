@@ -65,6 +65,37 @@
     cursor: pointer;
 }
 
+@media screen and (max-width: 775px) {
+    .profile {
+        flex-direction: column;
+    }
+
+    .profile__info {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 36px;
+    }
+
+    .profile__image {
+        margin-bottom: 30px;
+    }
+
+    .profile__description {
+        width: 100%;
+        text-align: center;
+        margin: 0;
+    }
+
+    .profile__add {
+        margin: 0;
+        width: 100%;
+        margin-bottom: 36px;
+    }
+}
+
 @media screen and (max-width: 480px) {
     .profile {
         flex-direction: column;
