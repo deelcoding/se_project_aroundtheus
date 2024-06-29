@@ -16,3 +16,15 @@ https://deelcoding.github.io/se_project_aroundtheus/
 **Figma**
 
 - [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)
+
+**Screenshots**
+
+Profile and Cards at desktop screen size
+
+https://github.com/deelcoding/se_project_aroundtheus/blob/main/screenshots/Profile.png
+https://github.com/deelcoding/se_project_aroundtheus/blob/main/screenshots/Cards.png
+
+Profile and Cards at mobile device screen size
+
+https://github.com/deelcoding/se_project_aroundtheus/blob/main/screenshots/Profile-screensize.png
+https://github.com/deelcoding/se_project_aroundtheus/blob/main/screenshots/Cards-screensize.png
