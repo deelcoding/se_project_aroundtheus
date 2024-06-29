@@ -27,6 +27,9 @@
     font-weight: 500;
     grid-area: title;
     margin: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .profile__edit {
@@ -49,6 +52,9 @@
     font-weight: 400;
     grid-area: description;
     margin: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .profile__add {
@@ -99,6 +105,9 @@
 @media screen and (max-width: 480px) {
     .profile {
         flex-direction: column;
+        justify-content: center;
+        max-width: 320px;
+        margin: 0;
     }
 
     .profile__info {
@@ -128,6 +137,10 @@
 }
 
 @media screen and (max-width: 320px) {
+    .profile__info {
+        justify-content: center;
+    }
+
     .profile__name {
         font-size: 22px;
         line-height: 1.2;
@@ -141,6 +154,10 @@
     .profile__description {
         font-size: 14px;
         line-height: 1.2;
+    }
+
+    .profile__image {
+        margin: 0 0 30px 0;
     }
 
     .profile__add {

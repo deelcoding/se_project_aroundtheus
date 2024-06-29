@@ -18,3 +18,9 @@
         margin-bottom: 48px;
     }
 }
+
+@media screen and (max-width:320px) {
+    .cards__list {
+        margin-bottom: 0;
+    }
+}

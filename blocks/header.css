@@ -12,19 +12,14 @@
 
 @media screen and (max-width: 320px) {
     .header {
-        max-width: 282px;
+        max-width: 320px;
+        margin: 0 0 40px 0;
     }
 
     .header__logo {
         width: 126px;
         height: 24px;
         margin-top: 28px;
-        margin-left: 27px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .header__logo {
         margin-left: 27px;
     }
 }
