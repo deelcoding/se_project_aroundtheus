@@ -64,7 +64,7 @@
     cursor: pointer;
 }
 
-@media screen and (min-width: 320px) {
+@media screen and (max-width: 320px) {
     .profile__name {
         font-size: 22px;
     }
@@ -113,8 +113,4 @@
         width: 100%;
         margin-bottom: 36px;
     }
-}
-
-@media screen and (max-width: 775px) {
-
 }
