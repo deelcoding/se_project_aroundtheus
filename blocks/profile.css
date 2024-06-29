@@ -6,7 +6,7 @@
 .profile__info {
     display: grid;
     grid-template-areas: "title button" "description description";
-    grid-template-columns: minmax(auto, 373px) auto;
+    grid-template-columns: minmax(auto, 415px) auto;
     align-items: center;
     grid-gap: 7px 18px;
 }
@@ -21,7 +21,7 @@
 }
 
 .profile__name {
-    font-family: "Inter";
+    font-family: 'Inter', sans-serif;
     font-size: 42px;
     line-height: 48px;
     font-weight: 500;
@@ -46,7 +46,7 @@
 }
 
 .profile__description {
-    font-family: "Inter", sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 18px;
     line-height: 22px;
     font-weight: 400;
@@ -138,7 +138,10 @@
 
 @media screen and (max-width: 320px) {
     .profile__info {
+        align-items: center;
         justify-content: center;
+        column-gap: 10px;
+        gap: 14px;
     }
 
     .profile__name {
@@ -163,5 +166,6 @@
     .profile__add {
         max-width: 282px;
         height: 50px;
+        margin: 0;
     }
 }
