@@ -48,7 +48,7 @@
 .profile__description {
     font-family: 'Inter', sans-serif;
     font-size: 18px;
-    line-height: 22px;
+    line-height: 1.2;
     font-weight: 400;
     grid-area: description;
     margin: 0;
