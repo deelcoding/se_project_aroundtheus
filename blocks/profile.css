@@ -21,10 +21,9 @@
 }
 
 .profile__name {
-    font-family: 'Inter', sans-serif;
+    font-family: 'InterMedium', sans-serif;
     font-size: 42px;
     line-height: 48px;
-    font-weight: 500;
     grid-area: title;
     margin: 0;
     text-overflow: ellipsis;
@@ -49,7 +48,6 @@
     font-family: 'Inter', sans-serif;
     font-size: 18px;
     line-height: 1.2;
-    font-weight: 400;
     grid-area: description;
     margin: 0;
     text-overflow: ellipsis;
