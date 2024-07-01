@@ -1,6 +1,7 @@
 .footer {
     max-width: 880px;
     margin-top: 67px;
+    margin-bottom: 60px;
     padding: 0;
 }
 
@@ -19,6 +20,7 @@
     .footer {
         max-width: 581px;
         justify-content: center;
+        margin: 0 auto;
     }
 
     .footer__copyright {
@@ -30,8 +32,7 @@
 @media screen and (max-width: 480px) {
     .footer {
         justify-self: center;
-        margin-top: 0;
-        margin-bottom: 36px;
+        margin: 0 auto 36px;
         max-width: 282px;
     }
 
@@ -44,8 +45,7 @@
 @media screen and (max-width: 320px) {
     .footer {
         max-width: 282px;
-        margin-top: 48px;
-        margin-bottom: 36px;
+        margin: 48px auto 36px;
     }
 
     .footer__copyright {
