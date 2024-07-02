@@ -14,7 +14,7 @@ Please take a look at the finish project using the link below!
 https://deelcoding.github.io/se_project_aroundtheus/
 
 Also, take a look at the video created for this project!
-https://youtu.be/we7JlW4CRNY
+https://youtu.be/BB6PiYVfD1w
 
 **Figma**
 
