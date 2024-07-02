@@ -11,9 +11,11 @@
 This project is made so all the elements are displayed correctly on popular screen sizes. This is to show how websites respond to different screen sizes. This project covers design layouts such as grid and flexbox, while using media queuries to size the page appropriately for different screen sizes.
 
 Please take a look at the finish project using the link below!
+
 https://deelcoding.github.io/se_project_aroundtheus/
 
 Also, take a look at the video created for this project!
+
 https://youtu.be/BB6PiYVfD1w
 
 **Figma**
