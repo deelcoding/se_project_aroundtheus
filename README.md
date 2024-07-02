@@ -13,6 +13,9 @@ This project is made so all the elements are displayed correctly on popular scre
 Please take a look at the finish project using the link below!
 https://deelcoding.github.io/se_project_aroundtheus/
 
+Also, take a look at the video created for this project!
+https://youtu.be/we7JlW4CRNY
+
 **Figma**
 
 - [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)
