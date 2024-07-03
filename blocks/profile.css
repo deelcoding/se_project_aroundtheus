@@ -80,7 +80,7 @@
     .profile__info {
         display: flex;
         flex-wrap: wrap;
-        width: 100%;
+        width: 300px;
         justify-content: center;
         align-items: center;
         margin-bottom: 36px;
@@ -103,7 +103,7 @@
 
     .profile__add {
         margin: 0;
-        width: 100%;
+        width: 400px;
         margin-bottom: 36px;
     }
 }
