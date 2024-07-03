@@ -31,25 +31,21 @@
 
 @media screen and (max-width: 480px) {
     .footer {
-        justify-self: center;
         margin: 0 auto 36px;
         max-width: 282px;
     }
 
     .footer__copyright {
-        font-size: 18px;
         margin-bottom: 0;
     }
 }
 
 @media screen and (max-width: 320px) {
     .footer {
-        max-width: 282px;
-        margin: 48px auto 36px;
+        margin: 0 auto 36px;
     }
 
     .footer__copyright {
         font-size: 14px;
-        margin-bottom: 0;
     }
 }

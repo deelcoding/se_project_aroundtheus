@@ -23,22 +23,8 @@
     }
 }
 
-@media screen and (max-width: 780px) {
-    .page__section {
-        margin: 0 20px;
-        max-width: calc(100% - 40px);
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .page__section {
-        max-width: calc(100% - 40px);
-    }
-}
-
 @media screen and (max-width: 320px) {
     .page__section {
-        max-width: calc(100% - 40px);
         position: relative;
     }
 }
