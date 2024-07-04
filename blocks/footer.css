@@ -1,5 +1,4 @@
 .footer {
-    max-width: 880px;
     margin-top: 67px;
     margin-bottom: 60px;
     padding: 0;
@@ -18,8 +17,6 @@
 
 @media screen and (max-width: 780px){
     .footer {
-        max-width: 581px;
-        justify-content: center;
         margin: 0 auto;
     }
 
