@@ -1,0 +1,11 @@
+.modal__container {
+    width: 430px;
+    height: 330px;
+    background-color: #ffffff;
+}
+
+.modal__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
