@@ -6,6 +6,11 @@
     right: 0;
     background-color: rgba(0, 0, 0, .5);
     z-index: 999;
+    padding: 0 19px;
+    display: flex;
+}
+
+.modal_opened {
     display: flex;
 }
 
@@ -78,8 +83,20 @@ input::placeholder {
     color: #000;
 }
 
-@media screen and (max-width: 1280px) {
-    .modal {
-        display: none;
+@media screen and (max-width: 630px) {
+    .modal__close {
+        width: 26px;
+        height: 26px;
+        bottom: calc(100% + 16px);
+        left: calc(100% - 28px);
+    }
+
+    .modal__container {
+        width: 282px;
+        padding: 25px 22px;
+    }
+
+    .modal__heading {
+        font-size: 18px;
     }
 }
