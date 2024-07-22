@@ -20,14 +20,6 @@ const initialCards = [
         link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg"
     },
     {
-        name: "Latemar",
-        link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg"
-    },
-    {
-        name: "Latemar",
-        link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg"
-    },
-    {
         name: "Vanoise National Park",
         link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg"
     },
@@ -48,6 +40,10 @@ const profileDescriptionInput = document.querySelector('#profile-description-inp
 
 const profileEditForm = profileEditModal.querySelector(".modal__form");
 
+const cardTemplate = document.querySelector('#card-template').content.firstElementChild;
+
+const cardListEl = document.querySelector('.cards__list');
+
 
 /*******************************************************************************
  *                                  FUNCTIONS                                  *
@@ -64,8 +60,19 @@ function closePopup() {
     profileEditModal.classList.remove('modal_opened');
 }
 
-function getCardElement() {
-    
+function getCardElement(cardData) {
+    // clone the template element with all its content and store it in a cardElement variable
+    const cardElement = cardTemplate.cloneNode(true);
+    // access the card title and image and store them in variables
+    const cardImageEl = cardElement.querySelector('.card__image');
+    const cardTitleEl = cardElement.querySelector('.card__title');
+    // set the path to the image to the link field of the object
+    cardImageEl.src = cardData.link;
+    // set the image alt text to the name field of the object
+    cardImageEl.alt = cardData.name;
+    // set the card title to the name field of the object, too
+    cardTitleEl.textContent = cardData.name;
+    return cardElement;
 }
 
 /*******************************************************************************
@@ -84,3 +91,13 @@ profileCloseModal.addEventListener ('click', closePopup);
 /* Save Button */
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+
+/* Cards */
+for(let i = 0; i < initialCards.length; i++) {
+    const card = initialCards[i];
+}
+
+initialCards.forEach((cardData) => {
+    const cardElement = getCardElement(cardData);
+    cardListEl.append(cardElement);
+})
