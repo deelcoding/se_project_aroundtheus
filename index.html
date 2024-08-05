@@ -32,7 +32,10 @@
             ></button>
             <p class="profile__description">Explorer</p>
           </div>
-          <button type="button" class="profile__add"></button>
+          <button
+            type="button"
+            class="profile__add-button"
+          ></button>
         </section>
         <section class="cards page__section">
           <ul class="cards__list"></ul>
@@ -43,24 +46,54 @@
       </footer>
     </div>
 
+    <!-- Edit Profile Modal -->
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
-        <button class="modal__close" id="profile-edit-close"></button>
+        <button class="modal__close"></button>
         <p class="modal__heading">Edit Profile</p>
-        <form class="modal__form">
+        <form class="modal__form" id="profile-edit">
           <input
+            class="modal__input modal__input_type_name"
             id="profile-title-input"
-            type="text"
-            name="title"
+            name="name"
             placeholder="Name"
+            type="text"
           />
           <input
+            class="modal__input modal__input_type_description"
             id="profile-description-input"
-            type="text"
             name="description"
             placeholder="Description"
+            type="text"
           />
           <button id="profile-save-btn" type="submit" class="modal__button">
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Add Card Modal -->
+    <div class="modal" id="add-card-modal">
+      <div class="modal__container">
+        <button class="modal__close"></button>
+        <p class="modal__heading">New Place</p>
+        <form class="modal__form" id="add-card-form">
+          <input
+            class="modal__input modal__input_type_title"
+            id="add-title-input"
+            name="title"
+            placeholder="Title"
+            type="text"
+          />
+          <input
+            class="modal__input modal__input_type_url"
+            id="add-url-input"
+            name="url"
+            placeholder="Image URL"
+            type="text"
+          />
+          <button id="add-save-btn" type="submit" class="modal__button">
             Save
           </button>
         </form>
