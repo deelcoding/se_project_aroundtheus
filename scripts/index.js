@@ -62,6 +62,10 @@ const cardUrlInput = document.querySelector("#add-url-input");
 
 const addCardForm = addCardModal.querySelector("#add-card-form");
 
+const previewModalCloseBtn = document.querySelector("#modal__close_type_preview");
+const previewModalClose = document.querySelector(".modal-preview");
+
+
 
 /*******************************************************************************
  *                                  FUNCTIONS                                  *
@@ -117,6 +121,21 @@ function getCardElement(cardData) {
         likeButton.classList.toggle("card__heart-active");
     });
 
+
+    // select modal
+    const previewModal = document.querySelector("#preview-modal");
+    const previewModalImageEl = previewModal.querySelector(".modal__image");
+    const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
+
+    // Preview Image
+    cardImageEl.addEventListener("click", () => {
+        openModal(previewModal);
+        previewModalImageEl.src = cardData.link;
+        previewModalImageEl.alt = cardData.name;
+        previewModalCaptionEl.textContent = cardData.name;
+        return cardElement;
+    });
+    
     // set the path to the image to the link field of the object
     cardImageEl.src = cardData.link;
     // set the image alt text to the name field of the object
@@ -130,6 +149,7 @@ function getCardElement(cardData) {
 /*******************************************************************************
  *                               EVENT LISTENERS                               *
  *******************************************************************************/
+
 
 // Edit Button
 profileEditBtn.addEventListener("click", () => {
@@ -150,3 +170,6 @@ addCardCloseModal.addEventListener("click", () => closeModal(addCardModal));
 
 // Cards
 initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
+
+// Close Image preview
+previewModalCloseBtn.addEventListener("click", () => closeModal(previewModal));
