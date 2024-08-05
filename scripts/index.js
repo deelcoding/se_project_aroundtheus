@@ -62,9 +62,6 @@ const cardUrlInput = document.querySelector("#add-url-input");
 
 const addCardForm = addCardModal.querySelector("#add-card-form");
 
-// Like Button
-const likeButton = document.querySelector("#card-like-btn");
-
 
 /*******************************************************************************
  *                                  FUNCTIONS                                  *
@@ -84,11 +81,6 @@ function closeModal(modal) {
 
 function openModal(modal) {
     modal.classList.add("modal_opened");
-}
-
-function like() {
-    likeButton.classList.remove("card__heart");
-    likeButton.classList.add("card__heart-active");
 }
 
 function getCardElement(cardData) {
@@ -133,4 +125,10 @@ initialCards.forEach((cardData) => {
     cardListEl.append(cardElement);
 })
 
-likeButton.addEventListener("click", like());
+// Like Button
+const likeButtons = document.querySelectorAll("#card-like-btn");
+likeButtons.forEach((likeButton) => {
+    likeButtons.addEventListener("click", () => {
+        likeButton.classList.toggle('card__heart-active')
+    });
+});
