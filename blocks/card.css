@@ -45,6 +45,9 @@
     cursor: pointer;
 }
 
-.card__heart:active {
-    color: #000000;
+.card__heart-active {
+    background: transparent url(../images/Heart-active.svg) center no-repeat;
+    width: 21px;
+    height: 18px;
+    border: none;
 }
