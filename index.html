@@ -101,7 +101,7 @@
     </div>
 
     <!-- Preview Image Modal -->
-     <div class="modal modal-preview" id="preview-modal">
+     <div class="modal" id="preview-modal">
       <div class="modal__container modal__container_type_preview">
         <button class="modal__close modal__close_type_preview"></button>
         <img class="modal__image" src="" alt="">
@@ -113,6 +113,7 @@
     <template id="card-template">
       <li class="card">
         <img src="" alt="" class="card__image" />
+        <button type="button" class="card__trash" id="card-trash-icon"></button>
         <div class="card__description">
           <h2 class="card__title"></h2>
           <button type="button" class="card__heart" id="card-like-btn"></button>

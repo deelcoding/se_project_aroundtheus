@@ -63,7 +63,6 @@ const cardUrlInput = document.querySelector("#add-url-input");
 const addCardForm = addCardModal.querySelector("#add-card-form");
 
 const previewModalCloseBtn = document.querySelector("#modal__close_type_preview");
-const previewModalClose = document.querySelector(".modal-preview");
 
 
 

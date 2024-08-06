@@ -48,3 +48,19 @@
 .card__heart-active {
     background-image: url(../images/Heart-active.svg);
 }
+
+.card__trash {
+    background: transparent url(../images/Trash.svg) center no-repeat;
+    border: none;
+    width: 18px;
+    height: 19px;
+    position: absolute;
+    margin-left: 249px;
+    margin-top: 18px;
+    padding: 0;
+}
+
+.card__trash:hover {
+    opacity: 60%;
+    cursor: pointer;
+}
