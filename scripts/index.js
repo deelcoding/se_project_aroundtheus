@@ -62,8 +62,8 @@ const cardUrlInput = document.querySelector("#add-url-input");
 
 const addCardForm = addCardModal.querySelector("#add-card-form");
 
-const previewModalCloseBtn = document.querySelector("#modal__close_type_preview");
-
+const previewModal = document.querySelector("#preview-modal");
+const previewModalCloseBtn = previewModal.querySelector(".modal__close");
 
 
 /*******************************************************************************
@@ -103,16 +103,10 @@ function renderCard(cardData) {
 function getCardElement(cardData) {
     // clone the template element with all its content and store it in a cardElement variable
     const cardElement = cardTemplate.cloneNode(true);
+
     // access the card title and image and store them in variables
     const cardImageEl = cardElement.querySelector('.card__image');
     const cardTitleEl = cardElement.querySelector('.card__title');
-    // find the delete button
-
-    // add the event listenter to the delete button
-        // cardElement.remove();
-
-    // add click listener to the cardImage element
-        // openModal with previewImageModal
 
     // like button
     const likeButton = cardElement.querySelector("#card-like-btn");
@@ -129,7 +123,6 @@ function getCardElement(cardData) {
 
 
     // select modal
-    const previewModal = document.querySelector("#preview-modal");
     const previewModalImageEl = previewModal.querySelector(".modal__image");
     const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
 
@@ -176,3 +169,6 @@ addCardCloseModal.addEventListener("click", () => closeModal(addCardModal));
 
 // Cards
 initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
+
+// close preview image
+previewModalCloseBtn.addEventListener("click", () => closeModal(previewModal));
