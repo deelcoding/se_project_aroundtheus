@@ -101,7 +101,7 @@
         max-width: 282px;
     }
 
-    .profile__add {
+    .profile__add-button {
         margin: 0;
         width: 100%;
         margin-bottom: 36px;
@@ -137,7 +137,7 @@
         font-size: 14px;
     }
 
-    .profile__add {
+    .profile__add-button {
         max-width: 282px;
         margin-bottom: 0;
     }

@@ -7,22 +7,25 @@
     background-color: rgba(0, 0, 0, .5);
     z-index: 999;
     padding: 0 19px;
-    display: none;
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s linear 0.5s, opacity 0.5s ease-in-out;
+    pointer-events: none;
 }
 
 .modal_opened {
-    display: flex;
-}
-
-.modal > .modal__container {
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0.5s linear, opacity 0.5s linear;
-}
-
-.modal:hover > .modal__container {
     visibility: visible;
     opacity: 1;
+    pointer-events: all;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.modal_hidden {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .modal__container {
