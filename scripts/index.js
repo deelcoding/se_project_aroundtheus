@@ -99,6 +99,7 @@ function handleAddCardFormSubmit(e) {
     const name = cardTitleInput.value;
     const link = cardUrlInput.value;
     renderCard({name, link}, cardListEl);
+    // added the reset code below to reset the image name and url
     e.target.reset();
     closeModal(addCardModal);
 }

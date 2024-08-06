@@ -14,6 +14,8 @@
     pointer-events: none;
 }
 
+/* Created a .modal_hidden class to fix transition for the modal opening and closing and the disappearing issue when moving off the screen */
+
 .modal_opened {
     visibility: visible;
     opacity: 1;
