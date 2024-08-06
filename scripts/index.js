@@ -120,6 +120,13 @@ function getCardElement(cardData) {
         likeButton.classList.toggle("card__heart-active");
     });
 
+    // trash button
+    const trashButton = cardElement.querySelector("#card-trash-btn");
+    trashButton.addEventListener("click", () => {
+        const cardTrash = trashButton.closest(".card");
+        cardTrash.remove();
+    });
+
 
     // select modal
     const previewModal = document.querySelector("#preview-modal");
@@ -169,6 +176,3 @@ addCardCloseModal.addEventListener("click", () => closeModal(addCardModal));
 
 // Cards
 initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
-
-// Close Image preview
-previewModalCloseBtn.addEventListener("click", () => closeModal(previewModal));
