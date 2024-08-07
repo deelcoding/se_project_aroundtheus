@@ -75,13 +75,13 @@ const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
 
 function closeModal(modal) {
     modal.classList.remove("modal_opened");
-    setTimeout(() => {
-        modal.classList.add("modal_hidden");
-      }, 500);
+    // setTimeout(() => {
+    //     modal.classList.add("modal_hidden");
+    //   }, 500);
 }
 
 function openModal(modal) {
-    modal.classList.remove("modal_hidden");
+    // modal.classList.remove("modal_hidden");
     modal.classList.add("modal_opened");
 }
 

@@ -23,13 +23,6 @@
     transition: opacity 0.5s ease-in-out;
 }
 
-.modal_hidden {
-    visibility: hidden;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.5s ease-in-out;
-}
-
 .modal__container {
     position: relative;
     padding: 36px;
@@ -139,5 +132,9 @@ input::placeholder {
 
     .modal__heading {
         font-size: 18px;
+    }
+
+    .modal__button {
+        font-size: 14px;
     }
 }
