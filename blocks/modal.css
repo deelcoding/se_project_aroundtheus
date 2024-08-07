@@ -98,6 +98,11 @@
     margin-bottom: 0;
 }
 
+.modal__button:hover {
+    cursor: pointer;
+    opacity: 80%;
+}
+
 .modal__form {
     gap: 30px;
     font-family: 'Inter', sans-serif;
