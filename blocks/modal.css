@@ -10,17 +10,14 @@
     display: flex;
     visibility: hidden;
     opacity: 0;
-    transition: visibility 0s linear 0.5s, opacity 0.5s ease-in-out;
+    transition: visibility 0.5s linear, opacity 0.5s ease-in-out;
     pointer-events: none;
 }
-
-/* Created a .modal_hidden class to fix transition for the modal opening and closing and the disappearing issue when moving off the screen */
 
 .modal_opened {
     visibility: visible;
     opacity: 1;
     pointer-events: all;
-    transition: opacity 0.5s ease-in-out;
 }
 
 .modal__container {
