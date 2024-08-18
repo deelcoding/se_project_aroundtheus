@@ -86,6 +86,7 @@ function handleOutsideClick(e){
     if(e.target.classList.contains("modal_opened")) {
         const modal = document.querySelector("modal_opened");
         console.log("outside click");
+        closeModal(modal);
     }
 }
   
@@ -93,6 +94,7 @@ function handleEscClose(e){
     if (e.key == 'Escape') {
         const modal = document.querySelector("modal_opened");
         console.log("escape key pressed");
+        closeModal(modal);
     }
 }
 
