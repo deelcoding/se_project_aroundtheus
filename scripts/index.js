@@ -73,31 +73,6 @@ const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
  *                                  FUNCTIONS                                  *
  *******************************************************************************/
 
-// function closeModal(modal) {
-//     modal.classList.remove("modal_opened");
-// }
-
-// function openModal(modal) {
-//     modal.classList.add("modal_opened");
-// }
-
-
-function handleOutsideClick(e){
-    if(e.target.classList.contains("modal_opened")) {
-        const modal = document.querySelector("modal_opened");
-        console.log("outside click");
-        closeModal(modal);
-    }
-}
-  
-function handleEscClose(e){
-    if (e.key == 'Escape') {
-        const modal = document.querySelector("modal_opened");
-        console.log("escape key pressed");
-        closeModal(modal);
-    }
-}
-
 function openModal(modal) {
     modal.classList.add("modal_opened");
     document.addEventListener("keydown", handleEscClose);
@@ -110,6 +85,19 @@ function closeModal(modal){
     modal.removeEventListener("mousedown", handleOutsideClick);
 }
 
+function handleOutsideClick(e){
+    if (e.target.classList.contains("modal_opened")) {
+        const modal = document.querySelector(".modal_opened");
+        closeModal(modal);
+    }
+}
+  
+function handleEscClose(e){
+    if (e.key == 'Escape') {
+        const modal = document.querySelector(".modal_opened");
+        closeModal(modal);
+    }
+}
 
 // Edit Button Modal
 function handleProfileEditSubmit(e) {
@@ -202,24 +190,3 @@ initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
 
 // close preview image
 previewModalCloseBtn.addEventListener("click", () => closeModal(previewModal));
-
-// // Close modal by pressing ESC
-// document.addEventListener("keydown", function (evt) {
-//     if (evt.key == 'Escape') {
-//         closeModal(profileEditModal);
-//         closeModal(addCardModal);
-//         closeModal(previewModal);
-//     }
-// });
-
-
-
-// // Close modal by clicking outside of the modal window
-// document.addEventListener("mousedown", function(evt) {
-//     const clickedElement = evt.target;
-//     const isOutside = !clickedElement.closest(".modal_opened"); // Check if the click was outside modal
-  
-//     if (isOutside) {
-//       console.log("is outside");
-//     }
-// });
