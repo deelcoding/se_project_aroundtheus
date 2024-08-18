@@ -68,6 +68,8 @@ const previewModalCloseBtn = previewModal.querySelector(".modal__close");
 const previewModalImageEl = previewModal.querySelector(".modal__image");
 const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
 
+const modalOverlay = document.getElementsByClassName(".modal");
+
 
 /*******************************************************************************
  *                                  FUNCTIONS                                  *
@@ -156,7 +158,7 @@ profileEditBtn.addEventListener("click", () => {
     profileDescriptionInput.value = profileDescription.textContent;
     openModal(profileEditModal)
 });
-profileCloseModal.addEventListener ('click', () => closeModal(profileEditModal));
+profileCloseModal.addEventListener ("click", () => closeModal(profileEditModal));
 
 // Save Button
 
@@ -172,3 +174,24 @@ initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
 
 // close preview image
 previewModalCloseBtn.addEventListener("click", () => closeModal(previewModal));
+
+// Close modal by pressing ESC
+document.addEventListener("keydown", function (evt) {
+    if (evt.key == 'Escape') {
+        closeModal(profileEditModal);
+        closeModal(addCardModal);
+        closeModal(previewModal);
+    }
+});
+
+
+
+// Close modal by clicking outside of the modal window
+document.addEventListener("mousedown", function(evt) {
+    const isOutside = evt.target.closest(".modal");
+    if (isOutside) {
+        closeModal(profileEditModal);
+        closeModal(addCardModal);
+        closeModal(previewModal);
+    }
+});

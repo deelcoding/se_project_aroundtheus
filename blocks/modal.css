@@ -100,12 +100,39 @@
     opacity: 80%;
 }
 
+.modal__button_disabled {
+    opacity: 20%;
+}
+
+.modal__button_disabled:hover {
+    cursor: default;
+    opacity: 20%;
+}
+
 .modal__form {
     gap: 30px;
     font-family: 'Inter', sans-serif;
     font-size: 14px;
     line-height: 1.2;
     font-weight: 400;
+}
+
+.modal__label {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal__error_visible {
+    color: #FF0000;
+    border-top: 1px solid #FF0000;
+}
+
+.modal__input_type_error {
+    color: #FF0000;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.2;
 }
 
 input {

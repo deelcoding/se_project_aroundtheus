@@ -7,7 +7,7 @@
     <title>Around the U.S.</title>
     <meta content="ie=edge" http-equiv="X-UA-Compatible" />
   </head>
-  <body class="page">
+  <body class="page" id="body">
     <div class="page__content">
       <header class="header page__section">
         <img
@@ -32,10 +32,7 @@
             ></button>
             <p class="profile__description">Explorer</p>
           </div>
-          <button
-            type="button"
-            class="profile__add-button"
-          ></button>
+          <button type="button" class="profile__add-button"></button>
         </section>
         <section class="cards page__section">
           <ul class="cards__list"></ul>
@@ -52,20 +49,35 @@
         <button class="modal__close"></button>
         <p class="modal__heading">Edit Profile</p>
         <form class="modal__form" id="profile-edit">
-          <input
-            class="modal__input modal__input_type_name"
-            id="profile-title-input"
-            name="name"
-            placeholder="Name"
-            type="text"
-          />
-          <input
-            class="modal__input modal__input_type_description"
-            id="profile-description-input"
-            name="description"
-            placeholder="Description"
-            type="text"
-          />
+          <label class="modal__label">
+            <input
+              class="modal__input modal__input_type_name"
+              id="profile-title-input"
+              name="name"
+              placeholder="Name"
+              type="text"
+              required
+              minlength="2"
+              maxlength="40"
+            />
+            <span class="modal__error" id="profile-title-input-error"></span>
+          </label>
+          <label class="modal__label">
+            <input
+              class="modal__input modal__input_type_description"
+              id="profile-description-input"
+              name="description"
+              placeholder="Description"
+              type="text"
+              required
+              minlength="2"
+              maxlength="200"
+            />
+            <span
+              class="modal__error"
+              id="profile-description-input-error"
+            ></span>
+          </label>
           <button id="profile-save-btn" type="submit" class="modal__button">
             Save
           </button>
@@ -79,35 +91,45 @@
         <button class="modal__close"></button>
         <p class="modal__heading">New Place</p>
         <form class="modal__form" id="add-card-form">
-          <input
-            class="modal__input modal__input_type_title"
-            id="add-title-input"
-            name="title"
-            placeholder="Title"
-            type="text"
-          />
-          <input
-            class="modal__input modal__input_type_url"
-            id="add-url-input"
-            name="url"
-            placeholder="Image URL"
-            type="text"
-          />
-          <button id="add-save-btn" type="submit" class="modal__button">
-            Create
+          <label class="modal__label">
+            <input
+              class="modal__input modal__input_type_title"
+              id="add-title-input"
+              name="title"
+              placeholder="Title"
+              type="text"
+              required
+              minlength="1"
+              maxlength="30"
+            />
+            <span class="modal__error" id="add-title-input-error"></span>
+          </label>
+          <label class="modal__label">
+            <input
+              class="modal__input modal__input_type_url"
+              id="add-url-input"
+              name="url"
+              placeholder="Image URL"
+              type="url"
+              required
+            />
+            <span class="modal__error" id="add-url-input-error"></span>
+          </label>
+          <button id="add-save-btn" type="submit" class="modal__button modal__button_disabled" disabled>
+            Save
           </button>
         </form>
       </div>
     </div>
 
     <!-- Preview Image Modal -->
-     <div class="modal" id="preview-modal">
+    <div class="modal" id="preview-modal">
       <div class="modal__container modal__container_type_preview">
-        <button class="modal__close  modal__close_type_preview"></button>
-        <img class="modal__image" src="" alt="">
+        <button class="modal__close modal__close_type_preview"></button>
+        <img class="modal__image" src="" alt="" />
         <p class="modal__caption"></p>
       </div>
-     </div>
+    </div>
 
     <!-- Card Template -->
     <template id="card-template">
@@ -122,5 +144,6 @@
     </template>
 
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validation.js"></script>
   </body>
 </html>
