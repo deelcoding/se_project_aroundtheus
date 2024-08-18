@@ -68,8 +68,6 @@ const previewModalCloseBtn = previewModal.querySelector(".modal__close");
 const previewModalImageEl = previewModal.querySelector(".modal__image");
 const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
 
-const modalOverlay = document.getElementsByClassName(".modal");
-
 
 /*******************************************************************************
  *                                  FUNCTIONS                                  *
@@ -83,26 +81,31 @@ const modalOverlay = document.getElementsByClassName(".modal");
 //     modal.classList.add("modal_opened");
 // }
 
+
 function handleOutsideClick(e){
     if(e.target.classList.contains("modal_opened")) {
-      const modal = document.querySelector("modal_opened");
-      closeModal(modal);
+        const modal = document.querySelector("modal_opened");
+        console.log("outside click");
+    }
+}
+  
+function handleEscClose(e){
+    if (e.key == 'Escape') {
+        const modal = document.querySelector("modal_opened");
+        console.log("escape key pressed");
     }
 }
 
 function openModal(modal) {
     modal.classList.add("modal_opened");
-    modal.addEventListener("keydown", (e) => {
-        if (evt.key == 'Escape') {
-        closeModal(modal);
-        }
-    });
-    document.addEventListener("mousedown", handleOutsideClick); 
+    document.addEventListener("keydown", handleEscClose);
+    modal.addEventListener("mousedown", handleOutsideClick); 
 }
 
-function closeModal(modal) {
+function closeModal(modal){
     modal.classList.remove("modal_opened");
-    document.removeEventListener("mousedown", handleOutsideClick);
+    document.removeEventListener("mousedown", handleEscClose);
+    modal.removeEventListener("mousedown", handleOutsideClick);
 }
 
 
