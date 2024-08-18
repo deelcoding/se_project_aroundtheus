@@ -1,3 +1,14 @@
+const validationConfig = {
+    formSelector: ".modal__form",
+    inputSelector: ".modal__input",
+    submitButtonSelector: ".modal__button",
+    inactiveButtonClass: "modal__button_disabled",
+    inputErrorClass: "modal__input_type_error",
+    errorClass: "modal__error_visible"
+};
+
+enableValidation(validationConfig);
+
 // enabling validation by calling enableValidation()
 // pass all the settings on call
 
@@ -41,9 +52,9 @@ function toggleButtonState(inputEls, submitButton, {inactiveButtonClass}) {
 }
 
 function setEventListener(formEl, options) {
-    const {inputSelector} = options;
+    const {inputSelector, submitButtonSelector} = options;
     const inputEls = [...formEl.querySelectorAll(inputSelector)];
-    const submitButton = formEl.querySelector(".modal__button");
+    const submitButton = formEl.querySelector(submitButtonSelector);
 
     inputEls.forEach((inputEl) => {
         inputEl.addEventListener("input", (e) => {
@@ -73,15 +84,3 @@ function enableValidation(options) {
         setEventListener(formEl, options);
     });
 }
-
-const validationConfig = {
-    formSelector: ".modal__form",
-    inputSelector: ".modal__input",
-    submitButtonSelector: ".modal__button",
-    inactiveButtonClass: "modal__button_disabled",
-    inputErrorClass: "modal__input_type_error",
-    errorClass: "modal__error_visible"
-};
-
-enableValidation(validationConfig);
-

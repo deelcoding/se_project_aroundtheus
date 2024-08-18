@@ -120,15 +120,23 @@
 .modal__label {
     display: flex;
     flex-direction: column;
+    position: relative;
+}
+
+.modal__error {
+    position: absolute;
+    top: 29px;
 }
 
 .modal__error_visible {
     color: #FF0000;
-    border-top: 1px solid #FF0000;
 }
 
 .modal__input_type_error {
     color: #FF0000;
+    border-bottom: 1px solid #FF0000;
+    margin: 0;
+    padding: 5px 0;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     font-size: 12px;
@@ -144,6 +152,7 @@ input {
 
 input::placeholder {
     color: #000;
+    font-size: 14px;
 }
 
 @media screen and (max-width: 630px) {

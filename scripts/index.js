@@ -29,12 +29,12 @@ const initialCards = [
     }
 ]
 
-
+// Find all close buttons
+const closeButtons = document.querySelectorAll('.modal__close');
 
 // Profile Edit
 const profileEditBtn = document.querySelector("#profile__edit");
 const profileEditModal = document.querySelector("#profile-edit-modal");
-const profileCloseModal = profileEditModal.querySelector(".modal__close");
 
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
@@ -52,7 +52,6 @@ const cardListEl = document.querySelector('.cards__list');
 // Add Card
 const addNewCardButton = document.querySelector(".profile__add-button");
 const addCardModal = document.querySelector("#add-card-modal")
-const addCardCloseModal = addCardModal.querySelector(".modal__close");
 
 const addCardTitle = document.querySelector('.card__title');
 const addCardUrl = document.querySelector('.card__image');
@@ -64,7 +63,6 @@ const addCardForm = addCardModal.querySelector("#add-card-form");
 
 // Preview Modal
 const previewModal = document.querySelector("#preview-modal");
-const previewModalCloseBtn = previewModal.querySelector(".modal__close");
 const previewModalImageEl = previewModal.querySelector(".modal__image");
 const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
 
@@ -81,14 +79,13 @@ function openModal(modal) {
 
 function closeModal(modal){
     modal.classList.remove("modal_opened");
-    document.removeEventListener("mousedown", handleEscClose);
+    document.removeEventListener("keydown", handleEscClose);
     modal.removeEventListener("mousedown", handleOutsideClick);
 }
 
 function handleOutsideClick(e){
     if (e.target.classList.contains("modal_opened")) {
-        const modal = document.querySelector(".modal_opened");
-        closeModal(modal);
+        closeModal(e.target);
     }
 }
   
@@ -122,6 +119,10 @@ function renderCard(cardData) {
     const cardElement = getCardElement(cardData);
     cardListEl.prepend(cardElement);
 }
+// function renderCard(item, method = "prepend") {
+//     const cardElement = getCardElement(item);
+//     cardListEl.[method](cardElement);
+// }
 
 function getCardElement(cardData) {
     // clone the template element with all its content and store it in a cardElement variable
@@ -174,7 +175,7 @@ profileEditBtn.addEventListener("click", () => {
     profileDescriptionInput.value = profileDescription.textContent;
     openModal(profileEditModal)
 });
-profileCloseModal.addEventListener ("click", () => closeModal(profileEditModal));
+// profileCloseModal.addEventListener ("click", () => closeModal(profileEditModal));
 
 // Save Button
 
@@ -183,10 +184,19 @@ addCardForm.addEventListener("submit", handleAddCardFormSubmit);
 
 // add new card button
 addNewCardButton.addEventListener("click", () => openModal(addCardModal));
-addCardCloseModal.addEventListener("click", () => closeModal(addCardModal));
+
+// addCardCloseModal.addEventListener("click", () => closeModal(addCardModal));
+// Replaced the above code with the code below
+
+closeButtons.forEach((button) => {
+  // Find the closest popup only once
+  const popup = button.closest('.modal');
+  // Set the listener
+  button.addEventListener('click', () => closeModal(popup));
+});
 
 // Cards
 initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
 
 // close preview image
-previewModalCloseBtn.addEventListener("click", () => closeModal(previewModal));
+// previewModalCloseBtn.addEventListener("click", () => closeModal(previewModal));
