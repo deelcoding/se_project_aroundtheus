@@ -75,13 +75,36 @@ const modalOverlay = document.getElementsByClassName(".modal");
  *                                  FUNCTIONS                                  *
  *******************************************************************************/
 
-function closeModal(modal) {
-    modal.classList.remove("modal_opened");
+// function closeModal(modal) {
+//     modal.classList.remove("modal_opened");
+// }
+
+// function openModal(modal) {
+//     modal.classList.add("modal_opened");
+// }
+
+function handleOutsideClick(e){
+    if(e.target.classList.contains("modal_opened")) {
+      const modal = document.querySelector("modal_opened");
+      closeModal(modal);
+    }
 }
 
 function openModal(modal) {
     modal.classList.add("modal_opened");
+    modal.addEventListener("keydown", (e) => {
+        if (evt.key == 'Escape') {
+        closeModal(modal);
+        }
+    });
+    document.addEventListener("mousedown", handleOutsideClick); 
 }
+
+function closeModal(modal) {
+    modal.classList.remove("modal_opened");
+    document.removeEventListener("mousedown", handleOutsideClick);
+}
+
 
 // Edit Button Modal
 function handleProfileEditSubmit(e) {
@@ -175,23 +198,23 @@ initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
 // close preview image
 previewModalCloseBtn.addEventListener("click", () => closeModal(previewModal));
 
-// Close modal by pressing ESC
-document.addEventListener("keydown", function (evt) {
-    if (evt.key == 'Escape') {
-        closeModal(profileEditModal);
-        closeModal(addCardModal);
-        closeModal(previewModal);
-    }
-});
+// // Close modal by pressing ESC
+// document.addEventListener("keydown", function (evt) {
+//     if (evt.key == 'Escape') {
+//         closeModal(profileEditModal);
+//         closeModal(addCardModal);
+//         closeModal(previewModal);
+//     }
+// });
 
 
 
-// Close modal by clicking outside of the modal window
-document.addEventListener("mousedown", function(evt) {
-    const isOutside = evt.target.closest(".modal");
-    if (isOutside) {
-        closeModal(profileEditModal);
-        closeModal(addCardModal);
-        closeModal(previewModal);
-    }
-});
+// // Close modal by clicking outside of the modal window
+// document.addEventListener("mousedown", function(evt) {
+//     const clickedElement = evt.target;
+//     const isOutside = !clickedElement.closest(".modal_opened"); // Check if the click was outside modal
+  
+//     if (isOutside) {
+//       console.log("is outside");
+//     }
+// });
