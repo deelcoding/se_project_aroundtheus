@@ -5,6 +5,7 @@
 - Intro
 - Figma
 - Images
+- Updated notes for the code that was added for Sprints 5 and 6
 
 **Intro**
 
@@ -33,3 +34,9 @@ Profile and Cards at mobile device screen size
 
 https://github.com/deelcoding/se_project_aroundtheus/blob/main/screenshots/Profile-screensize.png
 https://github.com/deelcoding/se_project_aroundtheus/blob/main/screenshots/Cards-screensize.png
+
+**Sprints 5 and 6 Code**
+
+Within Sprint 5, I have added functionality with the Edit Profile and Add Image button, as well as, functionality for the photo preview.
+
+Within Sprint 6, I have added validation for the Edit Profile and Add Image forms. It now has parameters for the information that is entered and will give error messages if it does not meet the requirements. Within this sprint, there was code added to close out of the pop-ups using the "Escape" key and clicking outside of the pop-up.
