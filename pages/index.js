@@ -1,10 +1,9 @@
-import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
+// import Card from "../components/Card.js";
 
 /*******************************************************************************
  *                                  CONSTANTS                                  *
  *******************************************************************************/
-
 const initialCards = [
     {
         name: "Yosemite Valley",
@@ -31,6 +30,7 @@ const initialCards = [
         link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg"
     }
 ]
+
 
 // Find all close buttons
 const closeButtons = document.querySelectorAll('.modal__close');
@@ -204,7 +204,9 @@ initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
 // close preview image
 // previewModalCloseBtn.addEventListener("click", () => closeModal(previewModal));
 
+
 const validationConfig = {
+    formSelector: ".modal__form",
     inputSelector: ".modal__input",
     submitButtonSelector: ".modal__button",
     inactiveButtonClass: "modal__button_disabled",
@@ -212,14 +214,24 @@ const validationConfig = {
     errorClass: "modal__error_visible"
 };
 
-const editFormElement = editFormModalWindow.querySelector("#add-card-modal");
-const addFormElement = addFormModalWindow.querySelector("#profile-edit-modal");
-
 const editFormValidator = new FormValidator(validationConfig, editFormElement);
 const addFormValidator = new FormValidator(validationConfig, addFormElement);
 
-editFormValidator();
-addFormElement();
+// const validationConfig = {
+//     inputSelector: ".modal__input",
+//     submitButtonSelector: ".modal__button",
+//     inactiveButtonClass: "modal__button_disabled",
+//     inputErrorClass: "modal__input_type_error",
+//     errorClass: "modal__error_visible"
+// };
 
-console.log(editFormElement);
-console.log(addFormElement);
+// const editFormElement = editFormModalWindow.querySelector("#add-card-modal");
+// const addFormElement = addFormModalWindow.querySelector("#profile-edit-modal");
+
+// const editFormValidator = new FormValidator(validationConfig, editFormElement);
+// const addFormValidator = new FormValidator(validationConfig, addFormElement);
+
+// const cardElement = new Card(data);
+
+// editFormValidator();
+// addFormElement();
