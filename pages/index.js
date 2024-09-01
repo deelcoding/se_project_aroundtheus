@@ -1,4 +1,5 @@
-import Card from "../components/Card.js"
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
 
 /*******************************************************************************
  *                                  CONSTANTS                                  *
@@ -90,7 +91,7 @@ function handleOutsideClick(e){
         closeModal(e.target);
     }
 }
-  
+
 function handleEscClose(e){
     if (e.key == 'Escape') {
         const modal = document.querySelector(".modal_opened");
@@ -192,9 +193,9 @@ addNewCardButton.addEventListener("click", () => openModal(addCardModal));
 
 closeButtons.forEach((button) => {
   // Find the closest popup only once
-  const popup = button.closest('.modal');
+    const popup = button.closest('.modal');
   // Set the listener
-  button.addEventListener('click', () => closeModal(popup));
+    button.addEventListener('click', () => closeModal(popup));
 });
 
 // Cards
@@ -202,3 +203,23 @@ initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
 
 // close preview image
 // previewModalCloseBtn.addEventListener("click", () => closeModal(previewModal));
+
+const validationConfig = {
+    inputSelector: ".modal__input",
+    submitButtonSelector: ".modal__button",
+    inactiveButtonClass: "modal__button_disabled",
+    inputErrorClass: "modal__input_type_error",
+    errorClass: "modal__error_visible"
+};
+
+const editFormElement = editFormModalWindow.querySelector("#add-card-modal");
+const addFormElement = addFormModalWindow.querySelector("#profile-edit-modal");
+
+const editFormValidator = new FormValidator(validationConfig, editFormElement);
+const addFormValidator = new FormValidator(validationConfig, addFormElement);
+
+editFormValidator();
+addFormElement();
+
+console.log(editFormElement);
+console.log(addFormElement);
