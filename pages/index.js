@@ -14,48 +14,16 @@ const initialCards = [
     { name: "Lago di Braies", link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg" }
 ];
 
-// DOM Elements
-// const selectors = {
-//     closeButtons: '.modal__close',
-//     profileEditBtn: '#profile__edit',
-//     profileEditModal: '#profile-edit-modal',
-//     profileName: '.profile__name',
-//     profileDescription: '.profile__description',
-//     profileNameInput: '#profile-title-input',
-//     profileDescriptionInput: '#profile-description-input',
-//     profileEditForm: '#profile-edit',
-//     cardTemplate: '#card-template',
-//     cardList: '.cards__list',
-//     addNewCardButton: '.profile__add-button',
-//     addCardModal: '#add-card-modal',
-//     cardTitleInput: '#add-title-input',
-//     cardUrlInput: '#add-url-input',
-//     addCardForm: '#add-card-form',
-//     previewModal: '#preview-modal',
-//     previewModalImage: '.modal__image',
-//     previewModalCaption: '.modal__caption'
+// const cardData = { 
+//     name: "Yosemite Valley", 
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg" 
 // };
 
-// const elements = {
-//     closeButtons: document.querySelectorAll(selectors.closeButtons),
-//     profileEditBtn: document.querySelector(selectors.profileEditBtn),
-//     profileEditModal: document.querySelector(selectors.profileEditModal),
-//     profileName: document.querySelector(selectors.profileName),
-//     profileDescription: document.querySelector(selectors.profileDescription),
-//     profileNameInput: document.querySelector(selectors.profileNameInput),
-//     profileDescriptionInput: document.querySelector(selectors.profileDescriptionInput),
-//     profileEditForm: document.querySelector(selectors.profileEditForm),
-//     cardTemplate: document.querySelector(selectors.cardTemplate).content.firstElementChild,
-//     cardList: document.querySelector(selectors.cardList),
-//     addNewCardButton: document.querySelector(selectors.addNewCardButton),
-//     addCardModal: document.querySelector(selectors.addCardModal),
-//     cardTitleInput: document.querySelector(selectors.cardTitleInput),
-//     cardUrlInput: document.querySelector(selectors.cardUrlInput),
-//     addCardForm: document.querySelector(selectors.addCardForm),
-//     previewModal: document.querySelector(selectors.previewModal),
-//     previewModalImage: document.querySelector(selectors.previewModalImage),
-//     previewModalCaption: document.querySelector(selectors.previewModalCaption)
-// };
+// const card = new Card(cardData);
+
+/*******************************************************************************
+ *                                DOM ELEMENTS                                 *
+ *******************************************************************************/
 
 // Find all close buttons
 const closeButtons = document.querySelectorAll('.modal__close');
@@ -103,6 +71,7 @@ const validationConfig = {
     errorClass: "modal__error_visible"
 };
 
+
 /*******************************************************************************
  *                                 VALIDATION                                  *
  *******************************************************************************/
@@ -114,6 +83,7 @@ function setupFormValidation() {
         formValidator.enableValidation();
     });
 }
+
 
 /*******************************************************************************
  *                                 CARD RENDER                                 *
@@ -143,11 +113,12 @@ function renderCard(cardData) {
 
 // const card = new Card(initialCards);
 
-// function renderCard(cardData) {
-//     const card = new Card(data, cardSelector, handlePreview);
-//     const cardElement = card.generateCard();
+// function renderCard() {
+//     const card = new Card(cardData);
+//     getCardElement();
 //     cardListEl.prepend(cardElement);
 // }
+
 
 /*******************************************************************************
  *                                  FUNCTIONS                                  *
@@ -195,11 +166,12 @@ function handleAddCardFormSubmit(e) {
 }
 
 function handlePreview(cardData) {
-    previewModalImage.src = cardData.link;
-    previewModalImage.alt = cardData.name;
-    previewModalCaption.textContent = cardData.name;
+    previewModalImageEl.src = cardData.link;
+    previewModalImageEl.alt = cardData.name;
+    previewModalCaptionEl.textContent = cardData.name;
     openModal(previewModal);
 }
+
 
 /*******************************************************************************
  *                               EVENT LISTENERS                               *

@@ -1,43 +1,37 @@
 export default class Card {
-    constructor(data, cardSelector, handlePreview) {
-        this._link = data.link;
-        this._name = data.name;
+    constructor({name, link}, cardSelector) {
+        this._name = name;
+        this._link = link;
         this._cardSelector = cardSelector;
-        this._handlePreview = handlePreview;
     }
 
     _setEventListeners() {
-        const cardElement = document.querySelector(this._cardSelector).content.querySelector(".card").cloneNode(true);
-        const likeButton = cardElement.querySelector("#card-like-btn");
-        const trashButton = cardElement.querySelector("#card-trash-btn");
-
-        likeButton.addEventListener("click", () => {
-            likeButton.classList.toggle("card__heart-active");
+        this._cardElement.querySelector("card__heart").addEventListener("click", () => {
+            this._handleLikeIcon();
         });
 
-        trashButton.addEventListener("click", () => {
-            cardElement.remove();
-        });
-
-        cardImageEl.addEventListener("click", () => {
-            this._handlePreview(this._data);
+        this._cardElement.querySelector("card__trash").addEventListener("click", () => {
+            this._handleDeleteCard();
         });
     }
 
-    _getCardElement() {
-        const cardImageEl = cardElement.querySelector('.card__image');
-        const cardTitleEl = cardElement.querySelector('.card__title');
+    _handleDeleteCard() {
+        this._cardElement.remove();
+        this._cardElement = null;
+    }
 
-        cardImageEl.src = this._data.link;
-        cardImageEl.alt = this._data.name;
-        cardTitleEl.textContent = this._data.name;
+    _handleLikeIcon() {
+        this._cardElement.querySelector("card__heart").classList.toggle("card__heart-active");
+    }
 
+    getView() {
+        this._cardElement = document.querySelector(this._cardSelector).content.querySelector(".card").cloneNode(true);
+
+        // get the card view
+        // set event listeners
         this._setEventListeners();
-
-        return cardElement;
+        // return the card
+        return this._cardElement;
     }
 
-    generateCard() {
-        return this._getCardElement();
-    }
 }
