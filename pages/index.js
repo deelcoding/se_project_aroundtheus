@@ -76,11 +76,12 @@ const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
 const cardSelector = "#card-template"; // The selector for the card template
 
 // Function to handle image click
-function handleImageClick(cardData) {
+function handleImageClick(data) {
     openModal(previewModal);
-    previewModalImageEl.src = cardData._link;
-    previewModalImageEl.alt = cardData._name;
-    previewModalCaptionEl.textContent = cardData._name;
+    previewModalImageEl.src = data.link;
+    previewModalImageEl.alt = data.name;
+    previewModalCaptionEl.textContent = data.name;
+    console.log(data._name);
 }
 
 // Function to render a card
@@ -137,7 +138,8 @@ formElements.forEach((formElement) => {
 function openModal(modal) {
     modal.classList.add("modal_opened");
     document.addEventListener("keydown", handleEscClose);
-    modal.addEventListener("mousedown", handleOutsideClick); 
+    modal.addEventListener("mousedown", handleOutsideClick);
+    // card.resetValidation();
 }
 
 // Close Modal function

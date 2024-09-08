@@ -55,6 +55,14 @@ export default class FormValidator {
         });
     }
 
+    resetValidation() {
+        this._toggleButtonState();
+
+        this._inputList.forEach((inputElement) => {
+            this._hideError(inputElement)
+        });
+    }
+
     enableValidation() {
         this._formElement.addEventListener("submit", (evt) => {
             evt.preventDefault();
@@ -64,19 +72,4 @@ export default class FormValidator {
         this._toggleButtonState(); // Initial state check
     }
 }
-
-// Usage
-const validationConfig = {
-    formSelector: ".modal__form",
-    inputSelector: ".modal__input",
-    submitButtonSelector: ".modal__button",
-    inactiveButtonClass: "modal__button_disabled",
-    inputErrorClass: "modal__input_type_error",
-    errorClass: "modal__error_visible"
-};
-
-document.querySelectorAll(validationConfig.formSelector).forEach(formElement => {
-    const formValidator = new FormValidator(validationConfig, formElement);
-    formValidator.enableValidation();
-});
 
