@@ -78,10 +78,9 @@ const cardSelector = "#card-template"; // The selector for the card template
 // Function to handle image click
 function handleImageClick(cardData) {
     openModal(previewModal);
-    previewModalImageEl.src = cardData.link;
-    previewModalImageEl.alt = cardData.name;
-    previewModalCaptionEl.textContent = cardData.name;
-    return cardData;
+    previewModalImageEl.src = cardData._link;
+    previewModalImageEl.alt = cardData._name;
+    previewModalCaptionEl.textContent = cardData._name;
 }
 
 // Function to render a card
@@ -119,9 +118,9 @@ formElements.forEach((formElement) => {
 });
 
 /**************************************************************************
- *                              CARD RENDER                               *
+ *                            OLD CARD RENDER                             *
  **************************************************************************/
-
+// can be removed after approval
 // const card = new Card(initialCards);
 
 // Render Cards
@@ -182,7 +181,7 @@ function handleAddCardFormSubmit(e) {
     closeModal(addCardModal);
 }
 
-// Get Card Information
+// Get Card Information (can be removed after approval)
 // function getCardElement(cardData) {
 //     // clone the template element with all its content and store it in a cardElement variable
 //     const cardElement = cardTemplate.cloneNode(true);
@@ -254,7 +253,7 @@ closeButtons.forEach((button) => {
     button.addEventListener('click', () => closeModal(popup));
 });
 
-// Cards
+// Card Render (can be removed after approval)
 // initialCards.forEach((data) => {
 //     renderCard(data, cardListEl);
 // });
