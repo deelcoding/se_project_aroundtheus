@@ -140,6 +140,7 @@ function openModal(modal) {
     modal.classList.add("modal_opened");
     document.addEventListener("keydown", handleEscClose);
     modal.addEventListener("mousedown", handleOutsideClick);
+    // card.resetValidation();
 }
 
 // Close Modal function
@@ -177,10 +178,11 @@ function handleAddCardFormSubmit(e) {
     e.preventDefault();
     const name = cardTitleInput.value;
     const link = cardUrlInput.value;
-    renderCard({name, link}, cardListEl);
+    renderCard({name, link}, cardListEl);  
     // added the reset code below to reset the image name and url
     e.target.reset();
     closeModal(addCardModal);
+    e.imageSubmit.reset();
 }
 
 // Get Card Information (can be removed after approval)
