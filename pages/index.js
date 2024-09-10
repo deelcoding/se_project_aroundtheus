@@ -122,7 +122,7 @@ formElements.forEach((formElement) => {
 /**************************************************************************
  *                            OLD CARD RENDER                             *
  **************************************************************************/
-// can be removed after approval
+// can be removed after approval //
 // const card = new Card(initialCards);
 
 // Render Cards
