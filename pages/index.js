@@ -104,14 +104,14 @@ const validationConfig = {
     errorClass: "modal__error_visible"
 };
 
-// Get all forms that need validation
-// const formElements = document.querySelectorAll(validationConfig.formSelector);
-
 const profileFormValidator = new FormValidator(validationConfig, profileEditForm);
 const cardFormValidator = new FormValidator(validationConfig, addCardForm);
 
 profileFormValidator.enableValidation();
 cardFormValidator.enableValidation();
+
+// Get all forms that need validation
+// const formElements = document.querySelectorAll(validationConfig.formSelector);
 
 // Iterate over each form element
 // formElements.forEach((formElement) => {
