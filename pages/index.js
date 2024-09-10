@@ -48,7 +48,7 @@ const profileDescriptionInput = document.querySelector('#profile-description-inp
 const profileEditForm = profileEditModal.querySelector("#profile-edit");
 
 // Card Template
-// const cardTemplate = document.querySelector('#card-template').content.firstElementChild;
+const cardSelector = "#card-template";
 
 const cardListEl = document.querySelector('.cards__list');
 
@@ -74,15 +74,12 @@ const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
  *                                CARD.JS                                 *
  **************************************************************************/
 
-const cardSelector = "#card-template"; // The selector for the card template
-
 // Function to handle image click
 function handleImageClick(data) {
     openModal(previewModal);
     previewModalImageEl.src = data.link;
     previewModalImageEl.alt = data.name;
     previewModalCaptionEl.textContent = data.name;
-    console.log(data._name);
 }
 
 // Function to render a card
@@ -108,16 +105,23 @@ const validationConfig = {
 };
 
 // Get all forms that need validation
-const formElements = document.querySelectorAll(validationConfig.formSelector);
+// const formElements = document.querySelectorAll(validationConfig.formSelector);
+
+const profileFormValidator = new FormValidator(validationConfig, profileEditForm);
+const cardFormValidator = new FormValidator(validationConfig, addCardForm);
+
+profileFormValidator.enableValidation();
+cardFormValidator.enableValidation();
 
 // Iterate over each form element
-formElements.forEach((formElement) => {
-    // Create a new instance of FormValidator for each form
-    const formValidator = new FormValidator(validationConfig, formElement);
-
-    // Enable validation on this form
-    formValidator.enableValidation();
-});
+// formElements.forEach((formElement) => {
+//     // Create a new instance of FormValidator for each form
+//     const formValidator = new FormValidator(validationConfig, formElement);
+    
+//     // Enable validation on this form
+//     formValidator.enableValidation();
+//     formValidator.disableSubmitButton();
+// });
 
 /**************************************************************************
  *                            OLD CARD RENDER                             *
@@ -180,6 +184,7 @@ function handleAddCardFormSubmit(e) {
     renderCard({name, link}, cardListEl);
     // added the reset code below to reset the image name and url
     e.target.reset();
+    cardFormValidator.disableSubmitButton();
     closeModal(addCardModal);
 }
 
@@ -243,10 +248,6 @@ addCardForm.addEventListener("submit", handleAddCardFormSubmit);
 
 // add new card button
 addNewCardButton.addEventListener("click", () => openModal(addCardModal));
-
-// addCardCloseModal.addEventListener("click", () => closeModal(addCardModal));
-// profileCloseModal.addEventListener ("click", () => closeModal(profileEditModal));
-// Replaced the two lines of code above with the code below
 
 closeButtons.forEach((button) => {
   // Find the closest popup only once

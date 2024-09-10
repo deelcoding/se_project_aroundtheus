@@ -1,7 +1,7 @@
 export default class Card {
     constructor(data, cardSelector, handleImageClick) {
-        this._name = data.name;
-        this._link = data.link;
+        this.name = data.name;
+        this.link = data.link;
         this._cardSelector = cardSelector;
         this._handleImageClick = handleImageClick;
     }
@@ -40,11 +40,11 @@ export default class Card {
         const cardTitleEl = this._cardElement.querySelector(".card__title");
 
         // Set the path to the image and alt text
-        this._cardImageElement.src = this._link;
-        this._cardImageElement.alt = this._name;
+        this._cardImageElement.src = this.link;
+        this._cardImageElement.alt = this.name;
 
         // Set the card title
-        cardTitleEl.textContent = this._name;
+        cardTitleEl.textContent = this.name;
 
         // Set event listeners
         this._setEventListeners();

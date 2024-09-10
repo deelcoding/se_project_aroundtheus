@@ -53,6 +53,7 @@ export default class FormValidator {
                 this._toggleButtonState();
             });
         });
+        this._toggleButtonState();
     }
 
     resetValidation() {
@@ -61,6 +62,11 @@ export default class FormValidator {
         });
         
         this._toggleButtonState();
+    }
+
+    disableSubmitButton() {
+        this._submitButton.classList.add(this._inactiveButtonClass);
+        this._submitButton.disabled = true;
     }
 
     enableValidation() {
