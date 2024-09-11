@@ -49,16 +49,11 @@ const profileEditForm = profileEditModal.querySelector("#profile-edit");
 
 // Card Template
 const cardSelector = "#card-template";
-
 const cardListEl = document.querySelector('.cards__list');
 
 // Add Card
 const addNewCardButton = document.querySelector(".profile__add-button");
 const addCardModal = document.querySelector("#add-card-modal");
-const imageSubmit = document.querySelector("#add-save-btn");
-
-// const addCardTitle = document.querySelector('.card__title');
-// const addCardUrl = document.querySelector('.card__image');
 
 const cardTitleInput = document.querySelector("#add-title-input");
 const cardUrlInput = document.querySelector("#add-url-input");
@@ -110,30 +105,6 @@ const cardFormValidator = new FormValidator(validationConfig, addCardForm);
 profileFormValidator.enableValidation();
 cardFormValidator.enableValidation();
 
-// Get all forms that need validation
-// const formElements = document.querySelectorAll(validationConfig.formSelector);
-
-// Iterate over each form element
-// formElements.forEach((formElement) => {
-//     // Create a new instance of FormValidator for each form
-//     const formValidator = new FormValidator(validationConfig, formElement);
-    
-//     // Enable validation on this form
-//     formValidator.enableValidation();
-//     formValidator.disableSubmitButton();
-// });
-
-/**************************************************************************
- *                            OLD CARD RENDER                             *
- **************************************************************************/
-// can be removed after approval //
-// const card = new Card(initialCards);
-
-// Render Cards
-// function renderCard(cardData) {
-//     const cardElement = getCardElement(cardData);
-//     cardListEl.prepend(cardElement);
-// }
 
 /**************************************************************************
  *                               FUNCTIONS                                *
@@ -188,47 +159,6 @@ function handleAddCardFormSubmit(e) {
     closeModal(addCardModal);
 }
 
-// Get Card Information (can be removed after approval)
-// function getCardElement(cardData) {
-//     // clone the template element with all its content and store it in a cardElement variable
-//     const cardElement = cardTemplate.cloneNode(true);
-
-//     // access the card title and image and store them in variables
-//     const cardImageEl = cardElement.querySelector('.card__image');
-//     const cardTitleEl = cardElement.querySelector('.card__title');
-
-//     // like button
-//     const likeButton = cardElement.querySelector("#card-like-btn");
-//     likeButton.addEventListener("click", () => {
-//         likeButton.classList.toggle("card__heart-active");
-//     });
-
-//     // trash button
-//     const trashButton = cardElement.querySelector("#card-trash-btn");
-//     trashButton.addEventListener("click", () => {
-//         const cardTrash = trashButton.closest(".card");
-//         cardTrash.remove();
-//     });
-
-//     // Preview Image
-//     cardImageEl.addEventListener("click", () => {
-//         openModal(previewModal);
-//         previewModalImageEl.src = cardData.link;
-//         previewModalImageEl.alt = cardData.name;
-//         previewModalCaptionEl.textContent = cardData.name;
-//         return cardElement;
-//     });
-    
-//     // set the path to the image to the link field of the object
-//     cardImageEl.src = cardData.link;
-//     // set the image alt text to the name field of the object
-//     cardImageEl.alt = cardData.name;
-//     // set the card title to the name field of the object, too
-//     cardTitleEl.textContent = cardData.name;
-//     return cardElement;
-// }
-
-
 /**************************************************************************
  *                            EVENT LISTENERS                             *
  **************************************************************************/
@@ -242,21 +172,18 @@ profileEditBtn.addEventListener("click", () => {
 
 
 // Save Button
-
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 addCardForm.addEventListener("submit", handleAddCardFormSubmit);
+
 
 // add new card button
 addNewCardButton.addEventListener("click", () => openModal(addCardModal));
 
+
+// Close modal buttons
 closeButtons.forEach((button) => {
   // Find the closest popup only once
     const popup = button.closest('.modal');
   // Set the listener
     button.addEventListener('click', () => closeModal(popup));
 });
-
-// Card Render (can be removed after approval)
-// initialCards.forEach((data) => {
-//     renderCard(data, cardListEl);
-// });
