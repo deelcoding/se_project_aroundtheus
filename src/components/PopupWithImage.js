@@ -1,21 +1,16 @@
-import Popup from "./Popup.js";
+import Popup from './Popup.js';
 
-class PopupWithImage extends Popup {
-  constructor(popupSelector) {
-    super({popupSelector});
-    this._popupImage = this._popupElement.querySelector(".modal__container_type_preview");
-  }
+export default class PopupWithImage extends Popup {
+    constructor(popupSelector) {
+        super(popupSelector);
+        this._imageElement = this._popup.querySelector('.modal__image'); 
+        this._captionElement = this._popup.querySelector('.modal__caption'); 
+    }
 
-  open() {
-    super.open();
-  }
-
-  close() {
-    this._popupImage.reset();
-    super.close();
-  }
+    open(name, link) {
+        this._imageElement.src = link;
+        this._imageElement.alt = name;
+        this._captionElement.textContent = name;
+        super.open(); 
+    }
 }
-
-const previewCardPopup = new PopupWithImage("#preview-modal", () => {});
-previewCardPopup.open();
-previewCardPopup.close();

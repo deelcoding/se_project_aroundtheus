@@ -107,6 +107,19 @@ cardFormValidator.enableValidation();
 
 
 /**************************************************************************
+ *                                 POPUP                                  *
+ **************************************************************************/
+
+
+const profileEditPopup = new Popup('#profile-edit-modal');
+const addCardPopup = new Popup('#add-card-modal');
+const previewPopup = new Popup('#preview-modal');
+
+profileEditBtn.addEventListener('click', () => profileEditPopup.open());
+addNewCardButton.addEventListener('click', () => addCardPopup.open());
+
+
+/**************************************************************************
  *                               FUNCTIONS                                *
  **************************************************************************/
 

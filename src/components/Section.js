@@ -1,17 +1,27 @@
-export default class Section {
-  constructor({items, renderer}, cardEl) {
-    this._initialArray = [items];
-    this._renderer = renderer;
-    this.container = document.querySelector(cardEl);
+class Section {
+  constructor({ items, renderer }, containerSelector) {
+      this._items = items;
+      this._renderer = renderer;
+      this._container = document.querySelector(containerSelector);
   }
 
   renderItems() {
-    this._initialArray.forEach(item => {
-      this._renderer(item);
-    });
+      this._items.forEach(item => this._renderer(item));
   }
 
-  addItem() {
-
+  addItem(element) {
+      this._container.prepend(element);
   }
 }
+
+// Usage example:
+const section = new Section(
+  {
+      items: initialCards,
+      renderer: (data) => {
+          const card = new Card(data, cardSelector, handleImageClick);
+          section.addItem(card.getView());
+      },
+  },
+  '.cards__list'
+);
