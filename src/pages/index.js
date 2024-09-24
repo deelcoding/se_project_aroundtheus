@@ -38,19 +38,20 @@ const section = new Section(
         renderer: (data) => {
             const card = new Card(data, cardSelector, handleImageClick);
             section.addItem(card.getView());
+            section.renderItems();
         },
     },
     '.cards__list'
 );
 
 // Function to render a card
-function renderCard(data) {
-    const card = new Card(data, cardSelector, handleImageClick);
-    cardListEl.prepend(card.getView());
-}
+// function renderCard(data) {
+//     const card = new Card(data, cardSelector, handleImageClick);
+//     cardListEl.prepend(card.getView());
+// }
 
-// Render initial cards
-initialCards.forEach(renderCard);
+// // Render initial cards
+// initialCards.forEach(renderCard);
 
 /**************************************************************************
  *                               VALIDATION                               *
