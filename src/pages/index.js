@@ -1,5 +1,6 @@
 import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Card.js";
+import Section from "../components/Section.js";
 import Popup from "../components/Popup.js";
 import UserInfo from "../components/UserInfo.js";
 import "../pages/index.css";
@@ -28,6 +29,17 @@ function handleImageClick(data) {
     previewModalImageEl.alt = data.name;
     previewModalCaptionEl.textContent = data.name;
 }
+
+const section = new Section(
+    {
+        items: initialCards,
+        renderer: (data) => {
+            const card = new Card(data, cardSelector, handleImageClick);
+            section.addItem(card.getView());
+        },
+    },
+    '.cards__list'
+);
 
 // Function to render a card
 function renderCard(data) {
