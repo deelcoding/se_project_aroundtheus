@@ -16,6 +16,8 @@ import {
     profileDescriptionInput,
     cardTitleInput,
     cardUrlInput,
+    previewModalCaptionEl,
+    previewModalImageEl,
 } from "../utils/constants.js";
 
 /**************************************************************************
