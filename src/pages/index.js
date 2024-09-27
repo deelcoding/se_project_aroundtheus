@@ -36,7 +36,7 @@ const cardSection = new Section(
             cardSection.addItem(card);
         },
     },
-    '.cards__list'
+    ".cards__list"
 );
 
 cardSection.renderItems();
