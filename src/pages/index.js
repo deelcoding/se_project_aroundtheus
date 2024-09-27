@@ -116,7 +116,6 @@ const userInfo = new UserInfo({
 
 // Edit Profile Modal Save Button
 function handleProfileEditSubmit(e) {
-    e.preventDefault();
     const newUserInfo = {
         name: profileNameInput.value,
         job: profileDescriptionInput.value,
