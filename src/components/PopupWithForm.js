@@ -15,12 +15,11 @@ export default class PopupWithForm extends Popup {
         });
         return values;
     }
+    
+    resetForm() {
+        this._form.reset();
+    }
 
-    resetInputs() {
-        this._inputs.forEach(input => {
-            input.value = "";
-        })
-    }    
     setEventListeners() {
         this._form.addEventListener('submit', (e) => {
             e.preventDefault();

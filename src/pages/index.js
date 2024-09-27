@@ -2,23 +2,20 @@ import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Card.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
-import Popup from "../components/Popup.js";
+// import Popup from "../components/Popup.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
 import "../pages/index.css";
 import {
     initialCards,
     cardSelector,
-    cardListEl,
     profileEditForm,
     addCardForm,
     profileEditBtn,
     addNewCardButton,
     profileNameInput,
     profileDescriptionInput,
-    cardTitleInput,
-    cardUrlInput,
-    previewModalCaptionEl,
-    previewModalImageEl,
+    validationConfig
 } from "../utils/constants.js";
 
 
@@ -29,9 +26,6 @@ import {
 // Function to handle image click
 function handleImageClick(data) {
     previewPopup.open(data.name, data.link);
-    previewModalImageEl.src = data.link;
-    previewModalImageEl.alt = data.name;
-    previewModalCaptionEl.textContent = data.name;
 }
 
 const cardSection = new Section(
@@ -58,21 +52,11 @@ function renderCard(data) {
  *                               VALIDATION                               *
  **************************************************************************/
 
-const validationConfig = {
-    formSelector: ".modal__form",
-    inputSelector: ".modal__input",
-    submitButtonSelector: ".modal__button",
-    inactiveButtonClass: "modal__button_disabled",
-    inputErrorClass: "modal__input_type_error",
-    errorClass: "modal__error_visible"
-};
-
 const profileFormValidator = new FormValidator(validationConfig, profileEditForm);
 const cardFormValidator = new FormValidator(validationConfig, addCardForm);
 
 profileFormValidator.enableValidation();
 cardFormValidator.enableValidation();
-
 
 /**************************************************************************
  *                                 POPUPS                                 *
@@ -84,12 +68,9 @@ profileEditPopup.setEventListeners();
 const addCardPopup = new PopupWithForm("#add-card-modal", handleAddCardFormSubmit);
 addCardPopup.setEventListeners();
 
-const previewPopup = new Popup("#preview-modal");
-previewPopup.setEventListeners();
+const previewPopup = new PopupWithImage("#preview-modal");
 
-profileEditBtn.addEventListener("click", () => profileEditPopup.open());
 addNewCardButton.addEventListener("click", () => addCardPopup.open());
-previewModalImageEl.addEventListener("click", () => previewPopup.open());
 
 // Edit Button Modal
 profileEditBtn.addEventListener("click", () => {
@@ -115,10 +96,10 @@ const userInfo = new UserInfo({
  **************************************************************************/
 
 // Edit Profile Modal Save Button
-function handleProfileEditSubmit(e) {
+function handleProfileEditSubmit(inputValues) {
     const newUserInfo = {
-        name: profileNameInput.value,
-        job: profileDescriptionInput.value,
+        name: inputValues.name,
+        job: inputValues.job,
     };
     userInfo.setUserInfo(newUserInfo);
     profileEditPopup.close();
@@ -133,5 +114,5 @@ function handleAddCardFormSubmit(inputValues) {
     cardSection.addItem(card);
     cardFormValidator.disableSubmitButton();
     addCardPopup.close();
-    addCardPopup.resetInputs();
+    addCardPopup.resetForm();
 }

@@ -61,3 +61,13 @@ export const addCardForm = addCardModal.querySelector("#add-card-form");
 export const previewModal = document.querySelector("#preview-modal");
 export const previewModalImageEl = previewModal.querySelector(".modal__image");
 export const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
+
+// Validation Config
+export const validationConfig = {
+    formSelector: ".modal__form",
+    inputSelector: ".modal__input",
+    submitButtonSelector: ".modal__button",
+    inactiveButtonClass: "modal__button_disabled",
+    inputErrorClass: "modal__input_type_error",
+    errorClass: "modal__error_visible"
+};
