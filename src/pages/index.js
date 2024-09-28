@@ -26,6 +26,7 @@ import {
 // Function to handle image click
 function handleImageClick(data) {
     previewPopup.open(data.name, data.link);
+    previewPopup.setEventListeners();
 }
 
 const cardSection = new Section(
