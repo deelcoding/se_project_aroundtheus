@@ -2,7 +2,6 @@ import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Card.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
-// import Popup from "../components/Popup.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import "../pages/index.css";
@@ -75,7 +74,7 @@ addNewCardButton.addEventListener("click", () => addCardPopup.open());
 
 // Edit Button Modal
 profileEditBtn.addEventListener("click", () => {
-    const currentUserInfo = userInfo.getUserInfo();
+    const currentUserInfo = profileInfo.getUserInfo();
     profileNameInput.value = currentUserInfo.name;
     profileDescriptionInput.value = currentUserInfo.job;
     profileEditPopup.open();
@@ -86,7 +85,7 @@ profileEditBtn.addEventListener("click", () => {
  *                               USER INFO                                *
  **************************************************************************/
 
-const userInfo = new UserInfo({
+const profileInfo = new UserInfo({
     nameSelector: ".profile__name",
     jobSelector: ".profile__description",
 });
@@ -100,9 +99,9 @@ const userInfo = new UserInfo({
 function handleProfileEditSubmit(inputValues) {
     const newUserInfo = {
         name: inputValues.name,
-        job: inputValues.job,
+        job: inputValues.description,
     };
-    userInfo.setUserInfo(newUserInfo);
+    profileInfo.setUserInfo(newUserInfo);
     profileEditPopup.close();
 }
 
