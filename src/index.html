@@ -131,15 +131,15 @@
     </div>
 
     <!-- Change Profile Picture -->
-    <div class="modal" id="profile-picture-modal" name="profilePictureForm">
+    <div class="modal" id="avatar-modal" name="avatarForm">
       <div class="modal__container">
         <button class="modal__close"></button>
         <p class="modal__heading">Change profile picture</p>
-        <form class="modal__form" id="profile-picture-form">
+        <form class="modal__form" id="avatar-form">
           <label class="modal__label">
             <input
               class="modal__input modal__input_type_url"
-              id="add-url-input"
+              id="avatar-url-input"
               name="url"
               placeholder="Image URL"
               type="url"
@@ -151,6 +151,17 @@
             Save
           </button>
         </form>
+      </div>
+    </div>
+
+    <!-- Delete Button Confirmation -->
+    <div class="modal" id="delete-picture-modal" name="deletePictureConfirmation">
+      <div class="modal__container">
+        <button class="modal__close"></button>
+        <p class="modal__heading">Are you sure?</p>
+        <button id="add-save-btn" type="submit" class="modal__button modal__button_disabled" disabled>
+          Yes
+        </button>
       </div>
     </div>
 

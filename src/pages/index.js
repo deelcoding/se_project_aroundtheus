@@ -4,6 +4,8 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
+// import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
+// import Api from "../components/Api.js";
 import "../pages/index.css";
 import {
     initialCards,
@@ -90,6 +92,44 @@ const profileInfo = new UserInfo({
     jobSelector: ".profile__description",
 });
 
+// api.getUserInfo()
+//     .then((res) => UserInfo.setUserAvatar(res.avatar))
+//     .catch((err) => alert(err));
+
+
+/**************************************************************************
+ *                                  API                                   *
+ **************************************************************************/
+
+// const api = new Api({
+//     baseUrl: "https://around-api.en.tripleten-services.com/v1",
+//     headers: {
+//     authorization: "13ca465c-2480-4978-b0a0-252ae6127405",
+//     "Content-Type": "application/json" 
+//     }
+// });
+
+/**************************************************************************
+ *                             CHANGE AVATAR                              *
+ **************************************************************************/
+
+// const avatarEditForm = document.querySelector("#avatar-modal");
+// avatarEditForm.addEventListener("submit", function(event) {
+//     event.preventDefault();
+
+//     const avatarUrl = document.querySelector("#avatar-url-input").value;
+
+//     // Call to api
+//     api.setUserAvatar({ avatar: avatarUrl})
+//     .then((data) => {
+//         document.querySelector(".profile__image").src = data.avatar;
+//         avatarEditPopup.close();
+//     })
+//     .catch((error) => {
+//         console.error("Error updating avatar:", error);
+//     });
+// });
+
 
 /**************************************************************************
  *                               FUNCTIONS                                *
@@ -107,7 +147,6 @@ function handleProfileEditSubmit(inputValues) {
 
 // Add card Modal Save Button
 function handleAddCardFormSubmit(inputValues) {
-    // {title: '...title', url: '...url'}
     const name = inputValues.title;
     const link = inputValues.url;
     const card = renderCard({name, link});
@@ -116,3 +155,4 @@ function handleAddCardFormSubmit(inputValues) {
     addCardPopup.close();
     addCardPopup.resetForm();
 }
+
