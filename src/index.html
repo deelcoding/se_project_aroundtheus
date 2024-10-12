@@ -130,6 +130,30 @@
       </div>
     </div>
 
+    <!-- Change Profile Picture -->
+    <div class="modal" id="profile-picture-modal" name="profilePictureForm">
+      <div class="modal__container">
+        <button class="modal__close"></button>
+        <p class="modal__heading">Change profile picture</p>
+        <form class="modal__form" id="profile-picture-form">
+          <label class="modal__label">
+            <input
+              class="modal__input modal__input_type_url"
+              id="add-url-input"
+              name="url"
+              placeholder="Image URL"
+              type="url"
+              required
+            />
+            <span class="modal__error" id="add-url-input-error"></span>
+          </label>
+          <button id="add-save-btn" type="submit" class="modal__button modal__button_disabled" disabled>
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+
     <!-- Card Template -->
     <template id="card-template">
       <li class="card">
