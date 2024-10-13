@@ -74,6 +74,14 @@ const previewPopup = new PopupWithImage("#preview-modal");
 
 addNewCardButton.addEventListener("click", () => addCardPopup.open());
 
+const deletePopup = new PopupWithForm("#delete-picture-modal", handleAddCardFormSubmit);
+
+deletePopup.addEventListener("click", () => deletePopup.open());
+
+const changeProfilePopup = new PopupWithForm("#avatar-modal", handleAddCardFormSubmit);
+
+changeProfilePopup.addEventListener("click", () => changeProfilePopup.open());
+
 // Edit Button Modal
 profileEditBtn.addEventListener("click", () => {
     const currentUserInfo = profileInfo.getUserInfo();

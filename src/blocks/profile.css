@@ -26,26 +26,27 @@
 }
 
 .hover-image {
+    background: transparent url(../images/Profile-edit.svg) center no-repeat;
     position: absolute;
     top: 0; /* Align with the base image */
     left: 0; /* Align with the base image */
-    width: 100%; /* Cover the base image */
-    height: 100%; /* Cover the base image */
+    width: 120px; /* Cover the base image */
+    height: 120px; /* Cover the base image */
     opacity: 0; /* Initially hidden */
     transition: opacity 0.3s; /* Smooth transition */
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
 .image-wrapper:hover .hover-image {
     opacity: 1; /* Show the hover image on hover */
 }
 
-/* .profile__image:hover {
-    background: transparent url(../images/Edit.svg) center no-repeat;
-    height: 26px;
-    width: 26px;
-    z-index: 1;
-    background-color: #c4c4c4;
-} */
+.image-wrapper:hover .profile__image {
+    opacity: 80%;
+    transition: opacity 0.3s; /* Smooth transition */
+}
 
 .profile__name {
     font-family: 'Inter', sans-serif;
