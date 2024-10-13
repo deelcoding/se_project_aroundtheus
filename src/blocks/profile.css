@@ -5,7 +5,7 @@
 
 .profile__info {
     display: grid;
-    grid-template-areas: "title button" "description description";
+    grid-template-areas: "title button""description description";
     grid-template-columns: minmax(auto, 373px) auto;
     align-items: center;
     grid-gap: 7px 18px;
@@ -18,6 +18,37 @@
     object-fit: cover;
     object-position: center;
     margin-right: 24px;
+}
+
+.profile__image:hover {
+    background: transparent url(../images/Edit.svg) center no-repeat;
+    height: 26px;
+    width: 26px;
+    z-index: 1;
+    background-color: #c4c4c4;
+}
+
+.edit-icon {
+    position: absolute;
+    top: 5px;
+    /* Adjust as needed */
+    right: 5px;
+    /* Adjust as needed */
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Light background for contrast */
+    border-radius: 50%;
+    /* Round the icon */
+    padding: 5px;
+    /* Add some padding */
+    opacity: 0;
+    /* Initially hidden */
+    transition: opacity 0.3s;
+    /* Smooth transition */
+}
+
+.profile-picture:hover .edit-icon {
+    opacity: 1;
+    /* Show the icon on hover */
 }
 
 .profile__name {
