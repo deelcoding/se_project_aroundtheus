@@ -17,11 +17,14 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            src="<%=require('./images/Avatar.png')%>"
-            alt="Profile Image"
-            class="profile__image"
-          />
+          <div class="image-wrapper">
+            <img
+              src="<%=require('./images/Avatar.png')%>"
+              alt="Profile Image"
+              class="profile__image"
+            />
+            <img src="./images/Edit.svg" alt="Profile Image Edit" class="hover-image">
+          </div>
           <div class="profile__info">
             <h1 class="profile__name">Jacques Cousteau</h1>
             <button
