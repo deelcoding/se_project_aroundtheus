@@ -9,11 +9,11 @@ export default class Card {
     _setEventListeners() {
         // Add event listeners for like and delete buttons
         this._cardElement.querySelector(".card__heart").addEventListener("click", () => {
-            this._handleLikeButton();
+            this.handleLikeButton();
         });
 
         this._cardElement.querySelector(".card__trash").addEventListener("click", () => {
-            this._handleTrashButton();
+            this.handleTrashButton();
         });
 
         // Add event listener for image click
@@ -22,11 +22,11 @@ export default class Card {
         });
     }
 
-    _handleLikeButton() {
+    handleLikeButton() {
         this._cardElement.querySelector(".card__heart").classList.toggle("card__heart-active");
     }
 
-    _handleTrashButton() {
+    handleTrashButton() {
         this._cardElement.remove();
         this._cardElement = null;
     }

@@ -5,7 +5,7 @@ import UserInfo from "../components/UserInfo.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 // import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
-// import Api from "../components/Api.js";
+import Api from "../components/Api.js";
 import "../pages/index.css";
 import {
     initialCards,
@@ -16,8 +16,11 @@ import {
     addNewCardButton,
     profileNameInput,
     profileDescriptionInput,
-    validationConfig
+    validationConfig,
+    editAvatar,
+    trashIcon
 } from "../utils/constants.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 
 
 /**************************************************************************
@@ -64,23 +67,27 @@ cardFormValidator.enableValidation();
  *                                 POPUPS                                 *
  **************************************************************************/
 
+// Edit Profile Popup
 const profileEditPopup = new PopupWithForm("#profile-edit-modal", handleProfileEditSubmit);
 profileEditPopup.setEventListeners();
 
+// Add Card Popup
 const addCardPopup = new PopupWithForm("#add-card-modal", handleAddCardFormSubmit);
 addCardPopup.setEventListeners();
-
-const previewPopup = new PopupWithImage("#preview-modal");
-
 addNewCardButton.addEventListener("click", () => addCardPopup.open());
 
-const deletePopup = new PopupWithForm("#delete-picture-modal", handleAddCardFormSubmit);
+// Image Preview Popup
+const previewPopup = new PopupWithImage("#preview-modal");
 
-deletePopup.addEventListener("click", () => deletePopup.open());
+// Delete Confirmation Popup
+// const deletePopup = new PopupWithConfirmation("#delete-picture-modal", handleDeleteConfirmation);
+// deletePopup.setEventListeners();
+// trashIcon.addEventListener("click", () => deletePopup.open());
 
+// Change Avatar Popup
 const changeProfilePopup = new PopupWithForm("#avatar-modal", handleAddCardFormSubmit);
-
-changeProfilePopup.addEventListener("click", () => changeProfilePopup.open());
+changeProfilePopup.setEventListeners();
+editAvatar.addEventListener("click", () => changeProfilePopup.open());
 
 // Edit Button Modal
 profileEditBtn.addEventListener("click", () => {
@@ -109,13 +116,41 @@ const profileInfo = new UserInfo({
  *                                  API                                   *
  **************************************************************************/
 
-// const api = new Api({
-//     baseUrl: "https://around-api.en.tripleten-services.com/v1",
-//     headers: {
-//     authorization: "13ca465c-2480-4978-b0a0-252ae6127405",
-//     "Content-Type": "application/json" 
-//     }
-// });
+const api = new Api({
+    baseUrl: "https://around-api.en.tripleten-services.com/v1",
+    headers: {
+    authorization: "9235985a-89e2-4166-9c58-9c8068c4f4bf",
+    "Content-Type": "application/json" 
+    }
+});
+
+/**************************************************************************
+ *                              LIKE BUTTON                               *
+ **************************************************************************/
+
+function handleLikeClick(cardData) {
+    if (cardData.isLiked) {
+        api
+        .dislikeCard(cardData._id)
+        .then(() => {
+            cardData.toggleLike();
+            cardData._isLiked = false;
+        })
+        .catch((err) => {
+            console.error(`Error on Card Dislike ${err}`);
+        });
+    } else {
+        api
+        .likeCard(cardData._id)
+        .then(() => {
+            cardData.toggleLike();
+            cardData._isLiked = true;
+        })
+        .catch((err) => {
+            console.error(`Error on Card Like ${err}`);
+        });
+    }
+}
 
 /**************************************************************************
  *                             CHANGE AVATAR                              *
@@ -164,3 +199,15 @@ function handleAddCardFormSubmit(inputValues) {
     addCardPopup.resetForm();
 }
 
+// function handleDeleteConfirmation(inputValues) {
+//     const link = inputValues.url;
+//     cardFormValidator.disableSubmitButton();
+//     deletePopup.close();
+//     deletePopup.resetForm();
+// }
+
+// function handleAvatarEditSubmit(inputValues) {
+//     const link = inputValues.url;
+//     cardFormValidator.disableSubmitButton();
+
+// }

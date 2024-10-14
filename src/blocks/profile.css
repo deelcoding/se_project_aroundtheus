@@ -11,7 +11,7 @@
     grid-gap: 7px 18px;
 }
 
-.image-wrapper {
+.profile__avatar-container {
     position: relative;
     display: inline-block; /* Ensures proper alignment */
 }
@@ -25,7 +25,7 @@
     margin-right: 24px;
 }
 
-.hover-image {
+.avatar__edit-icon {
     background: transparent url(../images/Profile-edit.svg) center no-repeat;
     position: absolute;
     top: 0; /* Align with the base image */
@@ -39,11 +39,11 @@
     cursor: pointer;
 }
 
-.image-wrapper:hover .hover-image {
+.profile__avatar-container:hover .avatar__edit-icon {
     opacity: 1; /* Show the hover image on hover */
 }
 
-.image-wrapper:hover .profile__image {
+.profile__avatar-container:hover .profile__image {
     opacity: 80%;
     transition: opacity 0.3s; /* Smooth transition */
 }
