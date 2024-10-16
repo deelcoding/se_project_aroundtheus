@@ -6,6 +6,8 @@ export default class PopupWithForm extends Popup {
         this._submitCallback = submitCallback;
         this._form = this._popup.querySelector("form"); 
         this._inputs = this._form.querySelectorAll("input");
+        this._submitButton = this._form.querySelector(".modal__button");
+        this._defaultButtonText = this._submitButton.textContent;
     }
     
     _getInputValues() {
@@ -16,15 +18,33 @@ export default class PopupWithForm extends Popup {
         return values;
     }
 
+    setLoadingState(isLoading) {
+        if (this._submitButton) {
+            this._submitButton.textContent = isLoading
+            ? this._defaultButtonText
+            : "Saving...";
+        }
+    }
+
     resetForm() {
         this._form.reset();
     }
+
+    // setEventListeners() {
+    //     this._form.addEventListener("submit", (e) => {
+    //         e.preventDefault();
+    //         const inputValues = this._getInputValues();
+    //         this._submitCallback(inputValues); 
+    //         this.close();
+    //     });
+    //     super.setEventListeners();
+    // }
 
     setEventListeners() {
         this._form.addEventListener("submit", (e) => {
             e.preventDefault();
             const inputValues = this._getInputValues();
-            this._submitCallback(inputValues); 
+            this._submitCallback(e, inputValues)
             this.close();
         });
         super.setEventListeners();

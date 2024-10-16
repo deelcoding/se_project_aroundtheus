@@ -4,6 +4,7 @@ export default class Card {
         this.link = data.link;
         this._cardSelector = cardSelector;
         this._handleImageClick = handleImageClick;
+        
     }
 
     _setEventListeners() {
