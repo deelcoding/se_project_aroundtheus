@@ -245,10 +245,10 @@ function handleProfileEditSubmit(formValues) {
 //     addCardPopup.resetForm();
 // }
 
-function handleAddCardFormSubmit(formValues) {
+function handleAddCardFormSubmit(inputValues) {
     profileEditPopup.setLoadingState(false);
 
-    const { name, link } = formValues;
+    const { name, link } = inputValues;
     api
         .uploadCard(name, link)
         .then((newCard) => {
