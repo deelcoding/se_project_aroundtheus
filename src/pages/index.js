@@ -95,17 +95,6 @@ api.getInitialCards()
 .then(cardsData => {cardSection.renderItems(cardsData)})
 .catch((err) => alert(err));
 
-// api.getUserInfo()
-// .then((res) => {
-//     console.log(res);
-//     UserInfo.setUserInfo({modalTitle: res.name, description: res.about});
-//     UserInfo.setAvatarImage(res.avatar);
-// })
-// .catch((err) => alert(err));
-
-// api.setUserInfo()
-// .then(userInfo => {profileInfo.setUserInformation(userInfo)});
-
 /**************************************************************************
  *                                 POPUPS                                 *
  **************************************************************************/
@@ -150,9 +139,21 @@ const profileInfo = new UserInfo({
     jobSelector: ".profile__description",
 });
 
-// api.getUserInfo().then((userData) => {
-//     profileInfo.setUserInformation({ name: userData.name, job: userData.about});
-// });
+api.getUserInfo()
+.then((userData) => {
+    profileInfo.setUserInformation({ name: userData.name, job: userData.about});
+});
+
+// api.getUserInfo()
+// .then((res) => {
+//     console.log(res);
+//     UserInfo.setUserInfo({modalTitle: res.name, description: res.about});
+//     UserInfo.setAvatarImage(res.avatar);
+// })
+// .catch((err) => alert(err));
+
+// api.setUserInfo()
+// .then(userInfo => {profileInfo.setUserInformation(userInfo)});
 
 
 /**************************************************************************
@@ -223,10 +224,9 @@ function handleProfileEditSubmit(formValues) {
     addCardPopup.setLoadingState(false);
 
     api
-        .setUserInfo(formValues.name, formValues.description)
+        .setUserInfo(formValues.name, formValues.about)
         .then((updatedUserData) => {
-        console.log(updatedUserData);
-        profileInfo.setUserInfo({
+        profileInfo.setUserInformation({
             name: updatedUserData.name,
             job: updatedUserData.about,
         });
@@ -234,8 +234,8 @@ function handleProfileEditSubmit(formValues) {
         })
         .catch((err) => console.error(err))
         .finally(() => {
-        addCardPopup.setLoadingState(true);
-    });
+            addCardPopup.setLoadingState(true);
+        });
 }
 
 // Add card Modal Save Button
@@ -248,11 +248,11 @@ function handleProfileEditSubmit(formValues) {
 function handleAddCardFormSubmit(inputValues) {
     profileEditPopup.setLoadingState(false);
 
-    const { name, link } = inputValues;
+    const { title, url } = inputValues;
     api
-        .uploadCard(name, link)
+        .uploadCard({name: title, link: url})
         .then((newCard) => {
-        cardSection.addItem(createCard(newCard));
+        cardSection.addItem(renderCard(newCard));
         cardFormValidator.disableSubmitButton();
         addCardPopup.close();
         addCardPopup.resetForm();

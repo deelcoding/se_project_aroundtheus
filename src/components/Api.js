@@ -5,7 +5,7 @@ export default class Api {
   }
 
   _request(endpoint, { method, body }) {
-    return fetch(`${this._baseUrl}/${endpoint}`, {
+    return fetch(`${this._baseUrl}${endpoint}`, {
       headers: this._headers,
       method: method,
       body: body,
@@ -33,34 +33,42 @@ export default class Api {
  *                           GET INITIAL CARDS                            *
  **************************************************************************/
   getInitialCards() {
-    return this._request(`cards`, {});
+    return this._request(`/cards`, {});
   }
 
 
 /**************************************************************************
  *                             GET USER INFO                              *
  **************************************************************************/
-  // getUserInfo() {
-  //   return this._request(`users/me`, {});
-  // }
+  getUserInfo() {
+    return this._request(`/users/me`, {
+      "about": "Placeholder Description",
+      "avatar": "https://practicum-content.s3.amazonaws.com/resources/avatar_placeholder_1704989734.svg",
+      "name": "Placeholder name",
+      "_id": "9ad20f72db0274ca5ee20ecb"
+    });
+  }
 
 
 /**************************************************************************
  *                             SET USER INFO                              *
  **************************************************************************/
-  // setUserInfo({ name, about }) {
-  //   return this._request(`users/me`, {
-  //     method: "PATCH",
-  //     body: JSON.stringify({ name: name, about: about }),
-  //   });
-  // }
+  setUserInfo({ name, about }) {
+    return this._request(`/users/me`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        name: name, 
+        about: about
+      }),
+    });
+  }
 
 
 /**************************************************************************
  *                               SET AVATAR                               *
  **************************************************************************/
   // setUserAvatar(link) {
-  //   return this._request(`users/me/avatar`, {
+  //   return this._request(`/users/me/avatar`, {
   //     method: "PATCH",
   //     body: JSON.stringify({ avatar: link }),
   //   });
@@ -71,7 +79,7 @@ export default class Api {
  *                              UPLOAD CARD                               *
  **************************************************************************/
   uploadCard({ name, link }) {
-    return this._request(`cards`, {
+    return this._request(`/cards`, {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({
@@ -87,7 +95,7 @@ export default class Api {
  **************************************************************************/
 
   // deleteCard(id) {
-  //   return this._request(`cards/${id}`, {
+  //   return this._request(`/cards/${id}`, {
   //     method: "DELETE",
   //   });
   // }
