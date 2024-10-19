@@ -16,6 +16,10 @@ export default class Api {
     return res.ok ? res.json() : Promise.reject("Error: `${res.status}`");
   }
 
+  getAppInfo() {
+    return Promise.all([this.getInitialCards(), this.getUserInfo()]);
+  }
+
   // getInitialCards() {
   //   return fetch(`${this._baseUrl}/cards`, {
   //     headers: this._headers      
@@ -42,10 +46,11 @@ export default class Api {
  **************************************************************************/
   getUserInfo() {
     return this._request(`/users/me`, {
-      "about": "Placeholder Description",
-      "avatar": "https://practicum-content.s3.amazonaws.com/resources/avatar_placeholder_1704989734.svg",
-      "name": "Placeholder name",
+      "about": "about",
+      "avatar": "avatar",
+      "name": "name",
       "_id": "9ad20f72db0274ca5ee20ecb"
+      // "_id": "7201f736b481bff4a161c4a9"
     });
   }
 
@@ -67,12 +72,12 @@ export default class Api {
 /**************************************************************************
  *                               SET AVATAR                               *
  **************************************************************************/
-  // setUserAvatar(link) {
-  //   return this._request(`/users/me/avatar`, {
-  //     method: "PATCH",
-  //     body: JSON.stringify({ avatar: link }),
-  //   });
-  // }
+  setUserAvatar(avatarUrl) {
+    return this._request(`/users/me/avatar`, {
+      method: "PATCH",
+      body: JSON.stringify({ avatar: avatarUrl}),
+    });
+  }
 
 
 /**************************************************************************

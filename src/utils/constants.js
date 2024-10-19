@@ -44,6 +44,9 @@ export const profileDescriptionInput = document.querySelector("#profile-descript
 
 export const profileEditForm = profileEditModal.querySelector("#profile-edit");
 
+export const avatarInput = document.querySelector("#avatar-url-input");
+export const avatarImage = document.querySelector(".profile__image");
+
 // Card Template
 export const cardSelector = "#card-template";
 export const cardListEl = document.querySelector(".cards__list");

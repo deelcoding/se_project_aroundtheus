@@ -21,7 +21,9 @@ import {
     trashIcon,
     editAvatarForm,
     cardTitleInput,
-    cardUrlInput
+    cardUrlInput,
+    avatarInput,
+    avatarImage
 } from "../utils/constants.js";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 
@@ -45,8 +47,6 @@ const cardSection = new Section(
     },
     ".cards__list"
 );
-
-// cardSection.renderItems();
 
 // Function to render a card
 function renderCard(data) {
@@ -87,13 +87,37 @@ const api = new Api({
     baseUrl: "https://around-api.en.tripleten-services.com/v1",
     headers: {
     authorization: "9235985a-89e2-4166-9c58-9c8068c4f4bf",
+    // authorization: "86a879c6-b04e-4cf2-ba5b-20515965795e",
     "Content-Type": "application/json" 
     }
 });
 
+/**************************************************************************
+ *                                 CARDS                                  *
+ **************************************************************************/
+
+// API call to get the initial cards
 api.getInitialCards()
 .then(cardsData => {cardSection.renderItems(cardsData)})
 .catch((err) => alert(err));
+
+function handleAddCardFormSubmit(inputValues) {
+    addCardPopup.setLoadingState(true);
+
+    const { title, url } = inputValues;
+    api
+        .uploadCard({name: title, link: url})
+        .then((newCard) => {
+        cardSection.addItem(renderCard(newCard));
+        cardFormValidator.disableSubmitButton();
+        addCardPopup.close();
+        addCardPopup.resetForm();
+    })
+    .catch((err) => console.error(err))
+    .finally(() => {
+        addCardPopup.setLoadingState(false);
+    });
+}
 
 /**************************************************************************
  *                                 POPUPS                                 *
@@ -102,6 +126,14 @@ api.getInitialCards()
 // Edit Profile Popup
 const profileEditPopup = new PopupWithForm("#profile-edit-modal", handleProfileEditSubmit);
 profileEditPopup.setEventListeners();
+
+// Edit Button Modal
+profileEditBtn.addEventListener("click", () => {
+    // const currentUserInfo = profileInfo.getUserInformation();
+    // profileNameInput.value = currentUserInfo.name;
+    // profileDescriptionInput.value = currentUserInfo.job;
+    profileEditPopup.open();
+});
 
 // Add Card Popup
 const addCardPopup = new PopupWithForm("#add-card-modal", handleAddCardFormSubmit);
@@ -121,14 +153,6 @@ const changeProfilePopup = new PopupWithForm("#avatar-modal", handleAvatarEditSu
 changeProfilePopup.setEventListeners();
 editAvatar.addEventListener("click", () => changeProfilePopup.open());
 
-// Edit Button Modal
-profileEditBtn.addEventListener("click", () => {
-    const currentUserInfo = profileInfo.getUserInformation();
-    profileNameInput.value = currentUserInfo.name;
-    profileDescriptionInput.value = currentUserInfo.job;
-    profileEditPopup.open();
-});
-
 
 /**************************************************************************
  *                               USER INFO                                *
@@ -137,24 +161,42 @@ profileEditBtn.addEventListener("click", () => {
 const profileInfo = new UserInfo({
     nameSelector: ".profile__name",
     jobSelector: ".profile__description",
+    avatarSelector: ".profile__image",
 });
+
+// api
+//     .getAppInfo()
+//     .then(([userData, cardsData]) => {
+//         profileInfo.setUserInformation({ name: userData.name, job: userData.about });
+//         cardSection.renderItems(cardsData);
+//     })
+//     .catch((err) => {
+//     console.error(err);
+// });
 
 api.getUserInfo()
 .then((userData) => {
     profileInfo.setUserInformation({ name: userData.name, job: userData.about});
 });
 
-// api.getUserInfo()
-// .then((res) => {
-//     console.log(res);
-//     UserInfo.setUserInfo({modalTitle: res.name, description: res.about});
-//     UserInfo.setAvatarImage(res.avatar);
-// })
-// .catch((err) => alert(err));
+function handleProfileEditSubmit(formValues) {
+    profileEditPopup.setLoadingState(true);
 
-// api.setUserInfo()
-// .then(userInfo => {profileInfo.setUserInformation(userInfo)});
-
+    api
+        .setUserInfo({ name: formValues.name, about: formValues.description, avatar: formValues.url })
+        .then((updatedUserData) => {
+        profileInfo.setUserInformation({
+            name: updatedUserData.name,
+            job: updatedUserData.about,
+            avatar: updatedUserData.avatar,
+        });
+        profileEditPopup.close();
+        })
+        .catch((err) => console.error(err))
+        .finally(() => {
+            profileEditPopup.setLoadingState(false);
+        });
+}
 
 /**************************************************************************
  *                              LIKE BUTTON                               *
@@ -188,18 +230,23 @@ function handleLikeClick(cardData) {
  *                             CHANGE AVATAR                              *
  **************************************************************************/
 
-function handleAvatarEditSubmit(e, formValue) {
-    e.preventDefault();
+function handleAvatarEditSubmit() {
 
-    addCardPopup.setLoadingState(false);
-
-    const { link } = formValue;
+    changeProfilePopup.setLoadingState(true);
+    
     api
-        .setUserAvatar(link)
-        .then()
+        .setUserAvatar(avatarInput.value)
+        .then((data) => {
+            if (data.avatar) {
+                avatarImage.src = data.avatar;
+                avatarImage.alt = data.avatar;
+            } else {
+                console.log("Avatar image not found")
+            }
+        })
         .catch((err) => console.error(err))
         .finally(() => {
-        addCardPopup.setLoadingState(true);
+            changeProfilePopup.setLoadingState(false);
     });
 }
 
@@ -207,61 +254,6 @@ function handleAvatarEditSubmit(e, formValue) {
 /**************************************************************************
  *                               FUNCTIONS                                *
  **************************************************************************/
-
-
-
-// Edit Profile Modal Save Button
-// function handleProfileEditSubmit(inputValues) {
-//     const newUserInfo = {
-//         name: inputValues.name,
-//         job: inputValues.description,
-//     };
-//     profileInfo.setUserInfo(newUserInfo);
-//     profileEditPopup.close();
-// }
-
-function handleProfileEditSubmit(formValues) {
-    addCardPopup.setLoadingState(false);
-
-    api
-        .setUserInfo(formValues.name, formValues.about)
-        .then((updatedUserData) => {
-        profileInfo.setUserInformation({
-            name: updatedUserData.name,
-            job: updatedUserData.about,
-        });
-        addCardPopup.close();
-        })
-        .catch((err) => console.error(err))
-        .finally(() => {
-            addCardPopup.setLoadingState(true);
-        });
-}
-
-// Add card Modal Save Button
-// function handleAddCardFormSubmit() {
-//     cardFormValidator.disableSubmitButton();
-//     addCardPopup.close();
-//     addCardPopup.resetForm();
-// }
-
-function handleAddCardFormSubmit(inputValues) {
-    profileEditPopup.setLoadingState(false);
-
-    const { title, url } = inputValues;
-    api
-        .uploadCard({name: title, link: url})
-        .then((newCard) => {
-        cardSection.addItem(renderCard(newCard));
-        cardFormValidator.disableSubmitButton();
-        addCardPopup.close();
-        addCardPopup.resetForm();
-    })
-    .catch((err) => console.error(err))
-    .finally(() => {
-        profileEditPopup.setLoadingState(true);
-    });
-}
 
 // function handleDeleteConfirmation(inputValues) {
 //     const link = inputValues.url;
