@@ -83,6 +83,10 @@
     margin-bottom: 54px;
 }
 
+.modal__heading-delete {
+    margin: 0;
+}
+
 .modal__button {
     background-color: #000;
     color: #ffffff;
