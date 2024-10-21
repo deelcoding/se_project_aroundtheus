@@ -44,6 +44,9 @@ export const profileDescriptionInput = document.querySelector("#profile-descript
 
 export const profileEditForm = profileEditModal.querySelector("#profile-edit");
 
+export const avatarInput = document.querySelector("#avatar-url-input");
+export const avatarImage = document.querySelector(".profile__image");
+
 // Card Template
 export const cardSelector = "#card-template";
 export const cardListEl = document.querySelector(".cards__list");
@@ -61,6 +64,9 @@ export const addCardForm = addCardModal.querySelector("#add-card-form");
 export const previewModal = document.querySelector("#preview-modal");
 export const previewModalImageEl = previewModal.querySelector(".modal__image");
 export const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
+
+export const editAvatar = document.querySelector(".profile__avatar-container");
+export const editAvatarForm = document.querySelector("#avatar-form");
 
 // Validation Config
 export const validationConfig = {

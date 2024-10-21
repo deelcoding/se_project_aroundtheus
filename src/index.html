@@ -17,19 +17,23 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            src="<%=require('./images/Avatar.png')%>"
-            alt="Profile Image"
-            class="profile__image"
-          />
+          <div class="profile__avatar-container">
+            <img
+              src="<%=require('./images/Avatar.png')%>"
+              alt="Profile Image"
+              class="profile__image"
+              id="avatar"
+            />
+            <button type="button" class="avatar__edit-icon"></button>
+          </div>
           <div class="profile__info">
-            <h1 class="profile__name">Jacques Cousteau</h1>
+            <h1 class="profile__name"></h1>
             <button
               type="button"
               class="profile__edit"
               id="profile__edit"
             ></button>
-            <p class="profile__description">Explorer</p>
+            <p class="profile__description"></p>
           </div>
           <button type="button" class="profile__add-button"></button>
         </section>
@@ -127,6 +131,44 @@
         <button class="modal__close modal__close_type_preview"></button>
         <img class="modal__image" src="" alt="" />
         <p class="modal__caption"></p>
+      </div>
+    </div>
+
+    <!-- Change Profile Picture -->
+    <div class="modal" id="avatar-modal" name="avatarForm">
+      <div class="modal__container">
+        <button class="modal__close"></button>
+        <p class="modal__heading">Change profile picture</p>
+        <form class="modal__form" id="avatar-form">
+          <label class="modal__label">
+            <input
+              class="modal__input modal__input_type_url"
+              id="avatar-url-input"
+              name="url"
+              placeholder="Image URL"
+              type="url"
+              required
+            />
+            <span class="modal__error" id="avatar-url-input-error"></span>
+          </label>
+          <button id="add-save-btn" type="submit" class="modal__button modal__button_disabled" disabled>
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Delete Button Confirmation -->
+    <div class="modal" id="delete-picture-modal" name="deletePictureConfirmation">
+      <div class="modal__container">
+        <button class="modal__close"></button>
+
+        <form class="modal__form">
+          <p class="modal__heading modal__heading-delete">Are you sure?</p>
+          <button id="delete-confirm-btn" type="submit" class="modal__button">
+            Yes
+          </button>
+        </form>
       </div>
     </div>
 
