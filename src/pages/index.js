@@ -17,7 +17,9 @@ import {
     editAvatar,
     editAvatarForm,
     avatarInput,
-    avatarImage
+    avatarImage,
+    profileNameInput,
+    profileDescriptionInput
 } from "../utils/constants.js";
 
 
@@ -116,6 +118,9 @@ profileEditPopup.setEventListeners();
 
 // Edit Button Modal
 profileEditBtn.addEventListener("click", () => {
+    const currentUserInfo = profileInfo.getUserInformation();
+    profileNameInput.value = currentUserInfo.name;
+    profileDescriptionInput.value = currentUserInfo.job;
     profileEditPopup.open();
 });
 

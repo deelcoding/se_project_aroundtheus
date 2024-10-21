@@ -37,7 +37,6 @@ export default class Api {
       "avatar": "avatar",
       "name": "name",
       "_id": "9ad20f72db0274ca5ee20ecb"
-      // "_id": "7201f736b481bff4a161c4a9"
     });
   }
 
@@ -52,10 +51,6 @@ export default class Api {
         name: name, 
         about: about
       }),
-    })
-    .then(this._checkResponse)
-      .catch((err) => {
-        console.error(err);
     });
   }
 
@@ -69,10 +64,6 @@ export default class Api {
       body: JSON.stringify({
         avatar: url
       }),
-    })
-    .then(this._checkResponse)
-      .catch((err) => {
-        console.error(err);
     });
   }
 
