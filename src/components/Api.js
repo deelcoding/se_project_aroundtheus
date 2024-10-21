@@ -97,7 +97,6 @@ export default class Api {
  **************************************************************************/
 
   deleteCard({cardId}) {
-    console.log("request sent");
     return this._request(`/cards/${cardId}`, {
       method: "DELETE",
     });

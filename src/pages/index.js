@@ -128,7 +128,7 @@ addNewCardButton.addEventListener("click", () => addCardPopup.open());
 const previewPopup = new PopupWithImage("#preview-modal");
 
 // Delete Confirmation Popup
-const deletePopup = new PopupWithConfirmation("#delete-picture-modal", () => {});
+const deletePopup = new PopupWithConfirmation("#delete-picture-modal", handleDeleteCard);
 deletePopup.setEventListeners();
 
 // Change Avatar Popup
@@ -202,38 +202,25 @@ function handleAvatarEditSubmit() {
  **************************************************************************/
 
 function handleDeleteCard(card, cardId) {
-    deletePopup.open();
+    if (!cardId) {
+        console.error("card._id is undefined");
+        return;
+    }
 
     deletePopup.setSubmitAction(() => {
-        const deleteConfirm = document.querySelectorAll("#delete-confirm-btn");
-        // deleteConfirm.addEventListener("click", () => {
-        //     api
-        //     .deleteCard({cardId})
-        //     .then(() => {
-        //         card.handleTrashButton();
-        //         console.log(`Successfully deleted card with ID: ${cardId}`);
-        //     })
-        //     .catch((err) => {
-        //         console.error(err);
-        //     })
-        //     .finally(() => {
-        //         deletePopup.close();
-        //     });
-        // })
-        deleteConfirm.addEventListener("submit", () => {
-            api.deleteCard(cardId)
-                .then(() => {
-                    card.handleTrashButton();
-                    console.log(`Successfully deleted card with ID: ${cardId}`);
-                })
-                .catch((err) => {
-                    console.error(err);
-                })
-                .finally(() => {
-                    deletePopup.close();
-                });
-        });
+            api
+            .deleteCard({cardId})
+            .then(() => {
+                card.handleTrashButton();
+                console.log(`Successfully deleted card with ID: ${cardId}`);
+                deletePopup.close();
+            })
+            .catch((err) => {
+                console.error(err);
+            });
     });
+    
+    deletePopup.open();
 }
 
 function handleLikeToggle(card, cardId, isLiked) {
