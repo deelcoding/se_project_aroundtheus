@@ -20,19 +20,6 @@ export default class Api {
     return Promise.all([this.getInitialCards(), this.getUserInfo()]);
   }
 
-  // getInitialCards() {
-  //   return fetch(`${this._baseUrl}/cards`, {
-  //     headers: this._headers      
-  //   })
-  //     .then(res => {
-  //       if (res.ok) {
-  //         return res.json();
-  //       }
-  //       // if the server returns an error, reject the promise
-  //       return Promise.reject(`Error: ${res.status}`);
-  //     });
-  // }
-
 /**************************************************************************
  *                           GET INITIAL CARDS                            *
  **************************************************************************/
@@ -65,6 +52,10 @@ export default class Api {
         name: name, 
         about: about
       }),
+    })
+    .then(this._checkResponse)
+      .catch((err) => {
+        console.error(err);
     });
   }
 
@@ -72,10 +63,16 @@ export default class Api {
 /**************************************************************************
  *                               SET AVATAR                               *
  **************************************************************************/
-  setUserAvatar(avatarUrl) {
+  setUserAvatar(url) {
     return this._request(`/users/me/avatar`, {
       method: "PATCH",
-      body: JSON.stringify({ avatar: avatarUrl}),
+      body: JSON.stringify({
+        avatar: url
+      }),
+    })
+    .then(this._checkResponse)
+      .catch((err) => {
+        console.error(err);
     });
   }
 
@@ -99,28 +96,31 @@ export default class Api {
  *                              DELETE CARD                               *
  **************************************************************************/
 
-  // deleteCard(id) {
-  //   return this._request(`/cards/${id}`, {
-  //     method: "DELETE",
-  //   });
-  // }
+  deleteCard({cardId}) {
+    console.log("request sent");
+    return this._request(`/cards/${cardId}`, {
+      method: "DELETE",
+    });
+  }
 
 
 /**************************************************************************
  *                       ADDING AND REMOVING LIKES                        *
  **************************************************************************/
-  // likeCard(cardId) {
-  //   return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-  //     headers: this._headers,
-  //     method: "PUT",
-  //   }).then(this._handleResponse);
-  // }
+  likeCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      headers: this._headers,
+      method: "PUT",
+    })
+    .then(this._checkResponse);
+  }
 
-  // dislikeCard(cardId) {
-  //   return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-  //     headers: this._headers,
-  //     method: "DELETE",
-  //   }).then(this._handleResponse);
-  // }
+  dislikeCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      headers: this._headers,
+      method: "DELETE",
+    })
+    .then(this._checkResponse);
+  }
 
 }

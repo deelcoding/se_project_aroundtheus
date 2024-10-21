@@ -68,8 +68,6 @@ export const previewModalCaptionEl = previewModal.querySelector(".modal__caption
 export const editAvatar = document.querySelector(".profile__avatar-container");
 export const editAvatarForm = document.querySelector("#avatar-form");
 
-export const trashIcon = document.querySelectorAll("#card-trash-btn");
-
 // Validation Config
 export const validationConfig = {
     formSelector: ".modal__form",
