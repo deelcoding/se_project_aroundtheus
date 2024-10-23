@@ -126,7 +126,6 @@ profileEditBtn.addEventListener("click", () => {
   const currentUserInfo = profileInfo.getUserInformation();
   profileNameInput.value = currentUserInfo.name;
   profileDescriptionInput.value = currentUserInfo.job;
-  avatarImage.value = currentUserInfo.avatar;
   profileEditPopup.open();
 });
 
@@ -173,8 +172,8 @@ api
     profileInfo.setUserInformation({
       name: userData.name,
       job: userData.about,
+      avatar: userData.avatar,
     });
-    profileInfo.setUserAvatar(userData.avatar);
   })
   .catch((err) => console.error(err));
 
@@ -206,7 +205,7 @@ function handleAvatarEditSubmit() {
   api
     .setUserAvatar(avatarInput.value)
     .then((data) => {
-      profileInfo.setUserAvatar(data.avatar);
+      document.querySelector(".profile__image").src = data.avatar;
       editAvatarValidator.disableSubmitButton();
       changeProfilePopup.close();
       changeProfilePopup.resetForm();
