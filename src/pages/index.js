@@ -76,7 +76,6 @@ const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
     authorization: "9235985a-89e2-4166-9c58-9c8068c4f4bf",
-    // authorization: "86a879c6-b04e-4cf2-ba5b-20515965795e",
     "Content-Type": "application/json",
   },
 });
@@ -127,6 +126,7 @@ profileEditBtn.addEventListener("click", () => {
   const currentUserInfo = profileInfo.getUserInformation();
   profileNameInput.value = currentUserInfo.name;
   profileDescriptionInput.value = currentUserInfo.job;
+  avatarImage.value = currentUserInfo.avatar;
   profileEditPopup.open();
 });
 
@@ -140,6 +140,7 @@ addNewCardButton.addEventListener("click", () => addCardPopup.open());
 
 // Image Preview Popup
 const previewPopup = new PopupWithImage("#preview-modal");
+previewPopup.setEventListeners();
 
 // Delete Confirmation Popup
 const deletePopup = new PopupWithConfirmation(
@@ -205,15 +206,10 @@ function handleAvatarEditSubmit() {
   api
     .setUserAvatar(avatarInput.value)
     .then((data) => {
-      if (data.avatar) {
-        avatarImage.src = data.avatar;
-        avatarImage.alt = data.avatar;
-      } else {
-        console.log("Avatar image not found");
-      }
-      profileInfo.setUserAvatar(avatarInput.value);
-      changeProfilePopup.resetForm();
+      profileInfo.setUserAvatar(data.avatar);
+      editAvatarValidator.disableSubmitButton();
       changeProfilePopup.close();
+      changeProfilePopup.resetForm();
     })
     .catch((err) => console.error(err))
     .finally(() => {
