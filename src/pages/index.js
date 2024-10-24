@@ -199,13 +199,11 @@ function handleProfileEditSubmit(formValues) {
  *                             CHANGE AVATAR                              *
  **************************************************************************/
 
-function handleAvatarEditSubmit() {
+function handleAvatarEditSubmit(formValues) {
   changeProfilePopup.setLoadingState(true);
 
-  const inputValues = this._getInputValues();
-
   api
-    .setUserAvatar(inputValues.avatar)
+    .setUserAvatar(formValues.avatar)
     .then((data) => {
       profileInfo.setUserAvatar(data.avatar)
       editAvatarValidator.disableSubmitButton();
