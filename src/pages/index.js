@@ -16,8 +16,8 @@ import {
   validationConfig,
   editAvatar,
   editAvatarForm,
-  avatarInput,
-  avatarImage,
+  // avatarInput,
+  // avatarImage,
   profileNameInput,
   profileDescriptionInput,
 } from "../utils/constants.js";
@@ -202,10 +202,12 @@ function handleProfileEditSubmit(formValues) {
 function handleAvatarEditSubmit() {
   changeProfilePopup.setLoadingState(true);
 
+  const inputValues = this._getInputValues();
+
   api
-    .setUserAvatar(avatarInput.value)
+    .setUserAvatar(inputValues.avatar)
     .then((data) => {
-      document.querySelector(".profile__image").src = data.avatar;
+      profileInfo.setUserAvatar(data.avatar)
       editAvatarValidator.disableSubmitButton();
       changeProfilePopup.close();
       changeProfilePopup.resetForm();
