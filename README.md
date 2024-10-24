@@ -40,3 +40,15 @@ https://github.com/deelcoding/se_project_aroundtheus/blob/main/screenshots/Cards
 Within Sprint 5, I have added functionality with the Edit Profile and Add Image button, as well as, functionality for the photo preview.
 
 Within Sprint 6, I have added validation for the Edit Profile and Add Image forms. It now has parameters for the information that is entered and will give error messages if it does not meet the requirements. Within this sprint, there was code added to close out of the pop-ups using the "Escape" key and clicking outside of the pop-up.
+
+**Sprints 7 and 8 Code**
+
+Within Sprint 7, I have created a Card class to pull the initial cards and handle the image click. A Form Validation class was setup to give errors if the form does not meet the requirements.
+
+Within Sprint 8, I setup WebPack with this project.
+
+**Sprint 9 Code**
+
+Within Sprint 9, I setup an API class that handled saving the information in the project to a server. The information that was handled was getting the cards, profile information, profile avatar, like button functionality, and deleting a card from the server.
+
+Also in this sprint, the UX of the forms were updating to add a "Saving..." feature to when you submit the forms.
