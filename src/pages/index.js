@@ -23,7 +23,7 @@ import {
 } from "../utils/constants.js";
 
 /**************************************************************************
- *                            RENDERING CARDS                             *
+ *                            RENDERING CARDS       test                      *
  **************************************************************************/
 
 // Function to handle image click
