@@ -205,7 +205,7 @@ function handleAvatarEditSubmit(formValues) {
   api
     .setUserAvatar(formValues.avatar)
     .then((data) => {
-      profileInfo.setUserAvatar(data.avatar)
+      profileInfo.setUserAvatar(data.avatar);
       editAvatarValidator.disableSubmitButton();
       changeProfilePopup.close();
       changeProfilePopup.resetForm();
